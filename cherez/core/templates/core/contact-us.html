@@ -1,0 +1,145 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- =========================== Breadcrumbs =================================== -->
+<div class="breadcrumbs_wrap dark">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="text-center">
+					<h2 class="breadcrumbs_title">Get in Touch</h2>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="#">Shop</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Contact</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =========================== Breadcrumbs =================================== -->
+
+
+<!-- =========================== Contact Us =================================== -->
+<section class="gray mt-0 pt-lg-5 pt-4">
+	<div class="container">
+		<div class="row mb-4">
+			<div class="col-lg-4 col-md-4">
+				<div class="contact-box">
+					<i class="fa-solid fa-house"></i>
+					<h4>ÜNVAN</h4>
+					810 Clis Road,<br>
+					Indraprash NW11 0PU, India
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-4">
+				<div class="contact-box">
+					<i class="fa-solid fa-envelope"></i>
+					<h4>E-POÇT</h4>
+					virasat@gmail.com<br>
+					my.virasat@gmail.com
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-md-4">
+				<div class="contact-box">
+					<i class="fa-solid fa-phone-volume"></i>
+					<h4>TELEFON</h4>
+					91+ 123 456 9857<br>
+					91+ 258 548 5426
+				</div>
+			</div>
+
+		</div>
+
+		<div class="row mt-5 align-items-center">
+			<div class="col-lg-6 col-md-12">
+				<div class="contact-form">
+					<div class="contact-form">
+						<form id="w0">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="contactform-name_surname">Adınız</label>
+									<input type="text" class="form-control" id="contactform-name_surname"
+										placeholder="Adınızı daxil edin">
+									<div class="help-block"></div>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="contactform-email">Email</label>
+									<input type="email" class="form-control" id="contactform-email"
+										placeholder="Mailinizi daxil edin...">
+									<div class="help-block"></div>
+								</div>
+							</div>
+							<div class="form-group col-lg-12 col-md-12">
+								<label for="contactform-subject">Telefon </label>
+								<input type="text" class="form-control" id="contactform-subject"
+									placeholder="Nömrənizi daxil edin...">
+								<div class="help-block"></div>
+							</div>
+							<div class="form-group col-lg-12 col-md-12">
+								<label for="contactform-message">Mesajınız</label>
+								<textarea class="form-control" id="contactform-message"
+									placeholder="Mesajınızi daxil edin..."></textarea>
+								<div class="help-block"></div>
+							</div>
+							<div class="form-group col-lg-12 col-md-12">
+								<button type="submit" class="btn btn-primary">Göndər</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 hide-91 c-map">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.805370222889!2d49.85686917525453!3d40.41316225585773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307db8e976d42b%3A0x4772923e2b16c6b3!2sSaytlar%C4%B1n%20haz%C4%B1rlanmas%C4%B1-%20SMM%20xidm%C9%99ti%20-Khan%20Buta%20Group%20MMC!5e0!3m2!1saz!2saz!4v1702623065324!5m2!1saz!2saz"
+					width="470" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- =========================== Contact Us =================================== -->
+
+
+<!-- ============================ Call To Action ================================== -->
+<section class="theme-bg call_action_wrap-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="call_action_wrap">
+					<div class="call_action_wrap-head">
+						<h3>Do You Have Questions ?</h3>
+						<span>We'll help you to grow your career and growth.</span>
+					</div>
+					<div class="newsletter_box">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Buradan Abunə Olun...">
+							<div class="input-group-append">
+								<button class="btn search_btn" type="button"><i
+										class="fas fa-arrow-alt-circle-right"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ============================ Call To Action End ================================== -->
+
+{% endblock content %}
