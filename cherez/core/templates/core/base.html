@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="author" content="www.frebsite.nl" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title>Cerez</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- Swiper CSS -->
+	<link rel="stylesheet" href="{% static "assets/css/plugins/swiper-bundle.min.css" %}" />
+	<!-- Custom CSS -->
+	<link href="{% static "assets/css/styles.css" %}" rel="stylesheet">
+
+    {% block extra_css %}{% endblock extra_css %}
+</head>
+
+<body class="grocery-theme">
+
+	<!-- ============================================================== -->
+	<!-- Main wrapper - style you can find in pages.scss -->
+	<!-- ============================================================== -->
+	<div id="main-wrapper">
+
+		<!-- Start Navigation -->
+		{% include "core/includes/_header.html" %}
+		<!-- End Navigation -->
+
+        <!-- ======================== Content Start ==================== -->
+        {% block content %}{% endblock content %}
+        <!-- ======================== Content End ==================== -->
+
+		<!-- ============================ Footer Start ================================== -->
+		{% include "core/includes/_footer.html" %}
+		<!-- ============================ Footer End ================================== -->
+	</div>
+	<!-- ============================================================== -->
+	<!-- End Wrapper -->
+	<!-- ============================================================== -->
+
+	<!-- ============================================================== -->
+	<!-- All Jquery -->
+	<!-- ============================================================== -->
+	<script src="{% static "assets/js/jquery.min.js" %}"></script>
+	<script src="{% static "assets/js/popper.min.js" %}"></script>
+	<script src="{% static "assets/js/bootstrap.min.js" %}"></script>
+	<script src="{% static "assets/js/metisMenu.min.js" %}"></script>
+	<script src="{% static "assets/js/owl-carousel.js" %}"></script>
+	<script src="{% static "assets/js/ion.rangeSlider.min.js" %}"></script>
+	<script src="{% static "assets/js/smoothproducts.js" %}"></script>
+	<script src="{% static "assets/js/jquery-rating.js" %}"></script>
+	<script src="{% static "assets/js/jQuery.style.switcher.js" %}"></script>
+	<script src="{% static "assets/js/swiper-bundle.min.js" %}"></script>
+	<script src="{% static "assets/js/custom.js" %}"></script>
+
+    {% block extra_js %}{% endblock extra_js %}
+	<!-- ============================================================== -->
+	<!-- This page plugins -->
+	<!-- ============================================================== -->
+</body>
+</html>
