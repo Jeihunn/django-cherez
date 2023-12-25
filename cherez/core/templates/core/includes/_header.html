@@ -53,10 +53,10 @@
 
                         <div class="nav-menus-wrapper" style="transition-property: none;">
                             <ul class="nav-menu">
-                                <li class="active">
+                                <li {% if request.resolver_match.url_name == 'index_view' %}class="active"{% endif %}>
                                     <a href="{% url "index_view" %}">Ana Səhifə</a>
                                 </li>
-                                <li>
+                                <li {% if request.resolver_match.url_name == 'about_us_view' %}class="active"{% endif %}>
                                     <a href="{% url "about_us_view" %}">Haqqımızda<span class="submenu-indicator"></span></a>
                                 </li>
                                 <li><a href="products.html">Məhsullar<span class="submenu-indicator"></span></a>
@@ -89,7 +89,7 @@
                                         </ul>-->
                                 </li>
 
-                                <li>
+                                <li {% if request.resolver_match.url_name == 'contact_us_view' %}class="active"{% endif %}>
                                     <a href="{% url "contact_us_view" %}">Bizimlə Əlaqə
                                         <span class="submenu-indicator"></span>
                                     </a>
