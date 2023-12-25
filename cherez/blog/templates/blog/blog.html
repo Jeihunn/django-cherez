@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+
+{% block content %}
+<!-- =========================== Breadcrumbs =================================== -->
+<div class="breadcrumbs_wrap dark">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="text-center">
+					<h2 class="breadcrumbs_title">News & Articles</h2>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="#">Shop</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Blogs</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =========================== Breadcrumbs =================================== -->
+
+
+<!-- =========================== News & Articles =================================== -->
+<section class="gray">
+	<div class="container">
+		<div class="row">
+
+			{% for post in blog_posts %}
+			<!-- Single Blog -->
+			<div class="col-lg-4 col-md-6 col-sm-6">
+				<article class="post-grid-layout">
+					<a href="{% url "blog_detail_view" slug=post.slug %}">
+						<div class="post-article-header">
+							<img src="{{ post.cover_image.url }}"
+								class="img-fluid mx-auto" alt="">
+						</div>
+					</a>
+					<div class="post-article box-inner">
+						<div class="post-grid-caption-header">
+							<span class="post-article-cat theme-bg">{{ post.category.title }}</span>
+							<h4 class="entry-title"><a href="{% url "blog_detail_view" slug=post.slug %}">{{ post.title }}</a>
+							</h4>
+							<div class="post-short-des">
+								<p>{{ post.short_description }}</p>
+							</div>
+						</div>
+					</div>
+					<div class="post-article-footer">
+						<span><i class="ti-calendar mr-1"></i>{{ post.created_at|date:"d.m.Y" }}</span>
+					</div>
+				</article>
+			</div>
+			{% endfor %}
+
+			<div class="col-md-12 col-md-12 text-center">
+				<a class="btn btn-theme rounded more-btn" href="#">Daha çox</a>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- =========================== News & Articles =================================== -->
+
+
+<!-- ============================ Call To Action ================================== -->
+<section class="theme-bg call_action_wrap-wrap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="call_action_wrap">
+					<div class="call_action_wrap-head">
+						<h3>Do You Have Questions ?</h3>
+						<span>We'll help you to grow your career and growth.</span>
+					</div>
+					<div class="newsletter_box">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Subscribe here...">
+							<div class="input-group-append">
+								<button class="btn search_btn" type="button"><i
+										class="fas fa-arrow-alt-circle-right"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- ============================ Call To Action End ================================== -->
+{% endblock content %}
