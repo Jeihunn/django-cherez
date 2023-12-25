@@ -5,6 +5,7 @@ from ckeditor.fields import RichTextField
 
 from services.abstract_models import TimeStampedModel
 
+
 # Create your models here.
 
 
@@ -34,3 +35,28 @@ class FAQ(TimeStampedModel):
         ordering = ("display_order", "id")
         verbose_name = _("Tez-tez verilən sual")
         verbose_name_plural = _("Tez-tez verilən suallar")
+
+
+class Contact(TimeStampedModel):
+    name = models.CharField(
+        verbose_name=_("Ad"),
+        max_length=100
+    )
+    email = models.EmailField(
+        verbose_name=_("E-poçt"),
+        max_length=100
+    )
+    phone_number = models.CharField(
+        verbose_name=_("Telefon nömrəsi"),
+        max_length=50
+    )
+    message = models.TextField(
+        verbose_name=_("Mesaj")
+    )
+
+    def __str__(self):
+        return f"{self.name} - {self.phone_number}"
+
+    class Meta:
+        verbose_name = _("Əlaqə")
+        verbose_name_plural = _("Əlaqələr")

@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.contrib import messages
 
+from .forms import ContactForm
 from .models import (
     FAQ,
 )
@@ -26,8 +30,16 @@ def about_us_view(request):
 
 
 def contact_us_view(request):
+    if request.method == "POST":
+        form = ContactForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _("Mesaj uğurla göndərildi."))
+            return redirect(reverse_lazy("contact_us_view"))
+    else:
+        form = ContactForm()
 
     context = {
-
+        "form": form,
     }
-    return render(request, "core/contact-us.html", context)
+    return render(request, 'core/contact-us.html', context)
