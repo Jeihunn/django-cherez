@@ -5,3 +5,11 @@
   list-style-type: none;
   padding: 0 0 0 5px;
 }
+
+#load-more-btn {
+  color: #fff;
+}
+
+#load-more-btn:hover {
+  background-color: #976418;
+}

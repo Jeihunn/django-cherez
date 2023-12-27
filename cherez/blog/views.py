@@ -12,24 +12,24 @@ from .models import BlogPost, BlogCategory
 
 
 def blog_list_view(request):
-    category_slug = request.GET.get("category", "")
-    query = request.GET.get("query", "")
+    category_slug = request.GET.get("category")
+    query = request.GET.get("query")
 
     blog_posts = BlogPost.objects.filter(
         is_active=True).order_by("-created_at")
 
     category = None
 
-    if category_slug != "":
+    if category_slug:
         category = get_object_or_404(
             BlogCategory, slug=category_slug, is_active=True)
         blog_posts = blog_posts.filter(category=category)
 
-    if query != "":
+    if query:
         blog_posts = blog_posts.filter(title__icontains=query)
 
     # Pagination
-    page_size = 10
+    page_size = 2
     paginator = Paginator(blog_posts, page_size)
     page = request.GET.get("page", 1)
 
@@ -50,8 +50,6 @@ def blog_list_view(request):
 
     context = {
         "blog_posts": blog_posts,
-        "category_slug": category_slug,
-        "query": query
     }
     return render(request, "blog/blog.html", context)
 
