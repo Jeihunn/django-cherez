@@ -83,21 +83,19 @@
 <script>
 	document.addEventListener('DOMContentLoaded', function () {
 		var page = 2;
-		var loadMoreBtn = document.getElementById('load-more-btn');
+		const loadMoreBtn = document.getElementById('load-more-btn');
 	
 		if (loadMoreBtn) {
 			loadMoreBtn.addEventListener('click', function () {
 				// URL'ye elave edilecek parametrleri yarat
-				var urlParams = `?page=${page}`;
-	
-				if ("{{ category_slug }}" !== "") {
-					urlParams += `&category={{ category_slug }}`;
+				if (window.location.search === "") {
+					urlParams = `?page=${page}`;
+				} else {
+					urlParams = `${window.location.search}&page=${page}`;
 				}
-	
-				if ("{{ query }}" !== "") {
-					urlParams += `&query={{ query }}`;
-				}
-	
+
+				console.log("urlParams: ", urlParams);
+
 				var url = `${window.location.origin}${window.location.pathname}${urlParams}`;
 	
 				fetch(url, {
