@@ -29,41 +29,21 @@
 
 <!-- =========================== News & Articles =================================== -->
 <section class="gray">
-	<div class="container">
+	<div class="container articles">
 		<div class="row">
-
-			{% for post in blog_posts %}
-			<!-- Single Blog -->
-			<div class="col-lg-4 col-md-6 col-sm-6">
-				<article class="post-grid-layout">
-					<a href="{% url "blog_detail_view" slug=post.slug %}">
-						<div class="post-article-header">
-							<img src="{{ post.cover_image.url }}"
-								class="img-fluid mx-auto" alt="">
-						</div>
-					</a>
-					<div class="post-article box-inner">
-						<div class="post-grid-caption-header">
-							<span class="post-article-cat theme-bg">{{ post.category.title }}</span>
-							<h4 class="entry-title"><a href="{% url "blog_detail_view" slug=post.slug %}">{{ post.title }}</a>
-							</h4>
-							<div class="post-short-des">
-								<p>{{ post.short_description }}</p>
-							</div>
-						</div>
-					</div>
-					<div class="post-article-footer">
-						<span><i class="ti-calendar mr-1"></i>{{ post.created_at|date:"d.m.Y" }}</span>
-					</div>
-				</article>
-			</div>
-			{% endfor %}
-
-			<div class="col-md-12 col-md-12 text-center">
-				<a class="btn btn-theme rounded more-btn" href="#">Daha çox</a>
-			</div>
-
+			
+			<!-- Blog Post List -->
+			{% include "blog/includes/_blog_posts_partial.html" %}
+			<!-- END Blog Post List -->
+			
 		</div>
+
+		{% if blog_posts.has_other_pages %}
+		<div class="col-md-12 col-md-12 text-center">
+			<a class="btn btn-theme rounded more-btn" id="load-more-btn">Daha çox</a>
+		</div>
+		{% endif %}
+
 	</div>
 </section>
 <!-- =========================== News & Articles =================================== -->
@@ -97,3 +77,57 @@
 </section>
 <!-- ============================ Call To Action End ================================== -->
 {% endblock content %}
+
+
+{% block extra_js %}
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		var page = 2;
+		var loadMoreBtn = document.getElementById('load-more-btn');
+	
+		if (loadMoreBtn) {
+			loadMoreBtn.addEventListener('click', function () {
+				// URL'ye elave edilecek parametrleri yarat
+				var urlParams = `?page=${page}`;
+	
+				if ("{{ category_slug }}" !== "") {
+					urlParams += `&category={{ category_slug }}`;
+				}
+	
+				if ("{{ query }}" !== "") {
+					urlParams += `&query={{ query }}`;
+				}
+	
+				var url = `${window.location.origin}${window.location.pathname}${urlParams}`;
+	
+				fetch(url, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						'X-Requested-With': 'XMLHttpRequest'
+					},
+				})
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(`HTTP error! Status: ${response.status}`);
+					}
+					return response.json();
+				})
+				.then(data => {
+					var container = document.querySelector('.container.articles .row');
+					container.innerHTML += data.html_content;
+					page += 1;
+	
+					// Daha cox blog yoxdursa butonu sil
+					if (!data.has_next_page) {
+						loadMoreBtn.remove();
+					}
+				})
+				.catch(error => {
+					console.error('ERROR:', error);
+				});
+			});
+		}
+	});	
+</script>
+{% endblock extra_js %}

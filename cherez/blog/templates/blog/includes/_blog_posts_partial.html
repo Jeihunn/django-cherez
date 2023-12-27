@@ -1,0 +1,26 @@
+{% for post in blog_posts %}
+<!-- Single Blog -->
+<div class="col-lg-4 col-md-6 col-sm-6">
+    <article class="post-grid-layout">
+        <a href="{% url "blog_detail_view" slug=post.slug %}">
+            <div class="post-article-header">
+                <img src="{{ post.cover_image.url }}" class="img-fluid mx-auto" alt="">
+            </div>
+        </a>
+        <div class="post-article box-inner">
+            <div class="post-grid-caption-header">
+                <span class="post-article-cat theme-bg">{{ post.category.title }}</span>
+                <h4 class="entry-title">
+                    <a href="{% url "blog_detail_view" slug=post.slug %}">{{ post.title }}</a>
+                </h4>
+                <div class="post-short-des">
+                    <p>{{ post.short_description }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="post-article-footer">
+            <span><i class="ti-calendar mr-1"></i>{{ post.created_at|date:"d.m.Y" }}</span>
+        </div>
+    </article>
+</div>
+{% endfor %}
