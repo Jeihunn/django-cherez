@@ -59,117 +59,31 @@
 								<div class="side-list no-border">
 									<div class="filter-card" id="shop-categories">
 
+										{% for category in parent_categories %}
 										<!-- Single Filter Card -->
 										<div class="single_filter_card">
-											<h5><a href="#shoes" data-toggle="collapse" class="collapsed"
-													aria-expanded="false" role="button">Shoes<i
-														class="accordion-indicator ti-angle-down"></i></a></h5>
-
-											<div class="collapse" id="shoes" data-parent="#shop-categories">
+											<h5>
+												<a href="#{{ category.slug }}" data-toggle="collapse" class="collapsed"
+													aria-expanded="false" role="button">{{ category.title }}<i
+														class="accordion-indicator ti-angle-down"></i></a>
+											</h5>
+									
+											<div class="collapse" id="{{ category.slug }}" data-parent="#shop-categories">
 												<div class="card-body">
 													<div class="inner_widget_link">
 														<ul>
-															<li><a href="#">Pumps & high Heals<span></span></a>
-															</li>
-															<li><a href="#">Sandels<span></span></a></li>
-															<li><a href="#">Sneakers<span></span></a></li>
-															<li><a href="#">Boots<span></span></a></li>
-															<li><a href="#">Casual Shoes<span></span></a></li>
-															<li><a href="#">Flats Sandel<span></span></a></li>
+															{% for sub_category in category.sub_categories.all %}
+																<li><a href="#">{{ sub_category.title }}<span></span></a></li>
+															{% endfor %}
 														</ul>
 													</div>
 												</div>
 											</div>
 										</div>
+										{% endfor %}
+									
 
-										<!-- Single Filter Card -->
-										<div class="single_filter_card">
-											<h5><a href="#clothing" data-toggle="collapse" class=""
-													aria-expanded="false" role="button">Clothing<i
-														class="accordion-indicator ti-angle-down"></i></a></h5>
 
-											<div class="collapse show" id="clothing"
-												data-parent="#shop-categories">
-												<div class="card-body">
-													<div class="inner_widget_link">
-														<ul>
-															<li><a href="#">Blazers<span></span></a></li>
-															<li><a href="#">Men Suits<span></span></a></li>
-															<li><a href="#">Blouses<span></span></a></li>
-															<li><a href="#">Coat Pant<span></span></a></li>
-															<li><a href="#">T-Shirts<span></span></a></li>
-															<li><a href="#">Men Shirts<span></span></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<!-- Single Filter Card -->
-										<div class="single_filter_card">
-											<h5><a href="#watches" data-toggle="collapse" class="collapsed"
-													aria-expanded="false" role="button">Watches<i
-														class="accordion-indicator ti-angle-down"></i></a></h5>
-
-											<div class="collapse" id="watches" data-parent="#shop-categories">
-												<div class="card-body">
-													<div class="inner_widget_link">
-														<ul>
-															<li><a href="#">Sport Watches<span></span></a></li>
-															<li><a href="#">Casual Watches<span></span></a></li>
-															<li><a href="#">Fashion Watches<span></span></a>
-															</li>
-															<li><a href="#">Girls Watches<span></span></a></li>
-															<li><a href="#">Smart Watches<span></span></a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<!-- Single Filter Card -->
-										<div class="single_filter_card">
-											<h5><a href="#bags" data-toggle="collapse" class="collapsed"
-													aria-expanded="false" role="button">Bags<i
-														class="accordion-indicator ti-angle-down"></i></a></h5>
-
-											<div class="collapse" id="bags" data-parent="#shop-categories">
-												<div class="card-body">
-													<div class="inner_widget_link">
-														<ul>
-															<li><a href="#">Casual Bags</a></li>
-															<li><a href="#">Sport Bags</a></li>
-															<li><a href="#">Lugges bag</a></li>
-															<li><a href="#">Fashion Bags</a></li>
-															<li><a href="#">Small bags</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-
-										<!-- Single Filter Card -->
-										<div class="single_filter_card">
-											<h5><a href="#accessories" data-toggle="collapse" class="collapsed"
-													aria-expanded="false" role="button">Accessories<i
-														class="accordion-indicator ti-angle-down"></i></a></h5>
-
-											<div class="collapse" id="accessories"
-												data-parent="#shop-categories">
-												<div class="card-body">
-													<div class="inner_widget_link">
-														<ul>
-															<li><a href="#">Men Wallet</a></li>
-															<li><a href="#">Men Belt</a></li>
-															<li><a href="#">Hats</a></li>
-															<li><a href="#">Jwelery</a></li>
-															<li><a href="#">Beauty</a></li>
-															<li><a href="#">Cosmetic</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
 
 									</div>
 								</div>
@@ -264,13 +178,12 @@
 									<span>Sırala:</span>
 								</label>
 								<div class="control">
-									<select id="limiter" data-role="limiter" class="limiter-options">
-										<option class="hidn" value="10" selected="selected">Önərilən sıralama
-										</option>
-										<option value="5">Məhsulun adı A-Z</option>
-										<option value="5">Məhsulun adı Z-A</option>
-										<option value="5">Qiymət (Azdan Çoxa)</option>
-										<option value="5">Qiymət (Çoxdan Aza)</option>
+									<select id="limiter" data-role="limiter" class="limiter-options" onchange="changeOrdering(this.value)">
+										<option class="hidn" {% if current_ordering == '-created_at' %}selected{% endif %}>Önərilən sıralama</option>
+										<option value="title" {% if current_ordering == 'title' %}selected{% endif %}>Məhsulun adı A-Z</option>
+										<option value="-title" {% if current_ordering == '-title' %}selected{% endif %}>Məhsulun adı Z-A</option>
+										<option value="price" {% if current_ordering == 'price' %}selected{% endif %}>Qiymət (Azdan Çoxa)</option>
+										<option value="-price" {% if current_ordering == '-price' %}selected{% endif %}>Qiymət (Çoxdan Aza)</option>
 									</select>
 								</div>
 							</div>
@@ -290,7 +203,7 @@
 							<span class="woo_pr_tag new">Yeni</span>
 							{% endif %}
 							{% if product.discounted_price %}
-							<span class="woo_offer_sell">{{ product.discount.percent }} Endirim</span>
+							<span class="woo_offer_sell">{{ product.discount.percent }}% Endirim</span>
 							{% endif %}
 							<div class="woo_product_thumb">
 								<img style="aspect-ratio: 500/500;" src="{{ product.cover_image.url }}"
@@ -360,4 +273,26 @@
 {% endblock content %}	
 
 
+{% block extra_js %}
+<script>
+    function changeOrdering(value) {
+        const currentUrl = window.location.href;
 
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // eger "ordering" parametri varsa onu sil
+        if (urlParams.has('ordering')) {
+            urlParams.delete('ordering');
+        }
+
+        // secilen ordering deyerini parametrlere elave et
+        if (value) {
+            urlParams.append('ordering', value);
+        }
+
+        const newUrl = urlParams.toString() ? currentUrl.split('?')[0] + '?' + urlParams.toString() : currentUrl.split('?')[0];
+
+        window.location.href = newUrl;
+    }
+</script>
+{% endblock extra_js %}

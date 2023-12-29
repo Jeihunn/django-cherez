@@ -368,10 +368,10 @@
 							<span class="woo_pr_tag new">Yeni</span>
 							{% endif %}
 							{% if similar_product.discounted_price %}
-							<span class="woo_offer_sell">{{ similar_product.discount.percent }} Endirim</span>
+							<span class="woo_offer_sell">{{ similar_product.discount.percent }}% Endirim</span>
 							{% endif %}
 							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
+								<img src="{{ similar_product.cover_image.url }}"
 									class="img-fluid" alt="" />
 							</div>
 							<div class="woo_product_caption center">

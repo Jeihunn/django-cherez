@@ -66,7 +66,8 @@ class Product(TimeStampedModel):
     )
     category = models.ForeignKey(
         to="product.ProductCategory",
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        null=True,
         related_name="products",
         verbose_name=_("Məhsul Kategoriyası"),
     )
