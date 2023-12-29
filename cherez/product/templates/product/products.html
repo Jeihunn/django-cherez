@@ -293,7 +293,7 @@
 							<span class="woo_offer_sell">{{ product.discount.percent }} Endirim</span>
 							{% endif %}
 							<div class="woo_product_thumb">
-								<img style="aspect-ratio: 500/500;" src="{% static "assets/img/vegetables/1.png" %}"
+								<img style="aspect-ratio: 500/500;" src="{{ product.cover_image.url }}"
 									class="img-fluid" alt="" />
 							</div>
 							<div class="woo_product_caption center">

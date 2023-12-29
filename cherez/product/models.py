@@ -125,7 +125,7 @@ class Product(TimeStampedModel):
 
     @property
     def discounted_price(self):
-        if not self.discount:
+        if not self.discount or self.discount.is_active is False:
             return None
         return self.price - (self.price * self.discount.percent / 100)
     
