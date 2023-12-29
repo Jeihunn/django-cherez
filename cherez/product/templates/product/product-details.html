@@ -1,0 +1,423 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- =========================== Breadcrumbs =================================== -->
+<div class="breadcrumbs_wrap dark">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
+				<div class="text-center">
+					<h2 class="breadcrumbs_title">Nuetrick Pineapple</h2>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#">Men</a></li>
+							<li class="breadcrumb-item"><a href="#">Fresh Fruits</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Pineapple</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =========================== Breadcrumbs =================================== -->
+
+
+<!-- =========================== Product Detail =================================== -->
+<section>
+	<div class="container product-details-area">
+		<div class="row">
+			<div class="col-lg-5 col-md-12 col-sm-12">
+				<div class="details-slider">
+					<div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff"
+						class="swiper mySwiper2">
+						<div class="swiper-wrapper">
+							{% for img in product.active_images %}
+							<div class="swiper-slide">
+								<img src="{{ img.image.url }}" />
+							</div>
+							{% endfor %}
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
+					</div>
+					<div thumbsSlider="" class="swiper mySwiper">
+						<div class="swiper-wrapper">
+							{% for img in product.active_images %}
+							<div class="swiper-slide">
+								<img src="{{ img.image.url }}" />
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-6 col-md-12 col-sm-12">
+				<div class="woo_pr_detail">
+
+					<div class="woo_cats_wrps">
+						<a href="#" class="woo_pr_cats">{{ product.category.title }}</a>
+						{% if product.is_new %}
+						<span class="woo_pr_trending">Yeni</span>
+						{% endif %}
+					</div>
+					<h2 class="woo_pr_title">{{ product.title }}</h2>
+
+					<div class="woo_pr_reviews">
+						<div class="woo_pr_rating">
+							<i class="fa fa-star filled"></i>
+							<i class="fa fa-star filled"></i>
+							<i class="fa fa-star filled"></i>
+							<i class="fa fa-star filled"></i>
+							<i class="fa fa-star"></i>
+						</div>
+					</div>
+
+					<div class="woo_pr_short_desc">
+						<p>{{ product.description }}</p>
+					</div>
+
+					<div class="woo_pr_price">
+						<div class="woo_pr_offer_price">
+							<h3>
+								{% if product.discounted_price %}
+									{{ product.discounted_price }}<i style="font-size: 18px;" class="fa-solid fa-manat-sign"></i>
+									<span class="org_price">{{ product.price }}<i style="font-size: 16px;" class="fa-solid fa-manat-sign"></i></span>
+								{% else %}
+									{{ product.price }}<i style="font-size: 18px;" class="fa-solid fa-manat-sign"></i>
+								{% endif %}
+							</h3>
+						</div>
+					</div>
+
+
+					{% if product.weight %}
+					<!-- Weight Info -->
+					<div class="woo_btn_action">
+						<div class="single_search_boxed">
+							<div class="widget-boxed-header">
+								<h4><a href="#pricing" data-toggle="collapse" aria-expanded="false"
+										role="button">Çəki: {{ product.weight }} kg</a></h4>
+							</div>
+						</div>
+					</div>
+					{% endif %}
+
+					<div class="no-mrg">
+						<div class="wp-area">
+							<a href="https://api.whatsapp.com/send?phone=15551234567"
+								class="fa-brands fa-whatsapp wp" target="_blank">Whatsappla əlaqə</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<!-- Product Description -->
+		<div class="row mt-3 mt-lg-5">
+			<div class="col-lg-12 col-md-12">
+				<div class="custom-tab style-1">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item">
+							<a class="nav-link active" id="description-tab" data-toggle="tab"
+								href="#description" role="tab" aria-controls="description" aria-selected="true"
+								aria-expanded="true">Məhsulun təsviri</a>
+						</li>
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade active show" id="description" role="tabpanel"
+							aria-labelledby="description-tab" aria-expanded="true">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+								incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+								nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+								Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla pariatur.</p>
+						</div>
+						<div class="tab-pane fade" id="information" role="tabpanel"
+							aria-labelledby="information-tab" aria-expanded="false">
+							<p>Lorem ipsum dolor sit amet, Ut enim ad minim veniam, quis nostrud exercitation
+								ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+								in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+								pariaturUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+								ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud
+								exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Ut enim ad
+								minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+								commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+								laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariaturUt
+								enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+								ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+								velit esse cillum dolore eu fugiat nulla pariaturDuis aute irure dolor in
+								reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+								Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+								fugiat nulla pariaturDuis aute irure dolor in reprehenderit in voluptate velit
+								esse cillum dolore eu fugiat nulla pariaturconsectetur adipiscing elit. Fusce
+								semper, magna a ultricies volutpat, mi eros viverra massa, vitae consequat nisi
+								justo in tortor. Proin accumsan felis ac felis dapibus, non iaculis mi varius.
+							</p>
+							<div class="product_meta">
+								<span class="sku_wrapper">SKU: <span class="sku">001</span></span>
+								<span class="posted_in">Categories:
+									<a href="#" rel="tag">Chair</a>,
+									<a href="#" rel="tag">Wood</a>
+								</span>
+								<span class="tagged_as">Tags:
+									<a href="#" rel="tag">Chair</a>,
+									<a href="#" rel="tag">Furniture</a>
+								</span>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab"
+							aria-expanded="false">
+							<div class="review-wrapper">
+								<div class="review-wrapper-header">
+									<h4>24 Reviews</h4>
+								</div>
+								<div class="review-wrapper-body">
+									<ul class="review-list">
+										<li>
+											<div class="reviews-box">
+												<div class="review-body">
+													<div class="review-avatar">
+														<img alt="" src="{% static "assets/img/user-3.jpg" %}"
+															class="avatar avatar-140 photo">
+													</div>
+													<div class="review-content">
+														<div class="review-info">
+															<div class="review-comment">
+																<div class="review-author">
+																	Cole Harris
+																</div>
+																<div class="review-comment-stars">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star empty"></i>
+																</div>
+															</div>
+															<div class="review-comment-date">
+																<div class="review-date">
+																	<span>4 weeks ago</span>
+																</div>
+															</div>
+														</div>
+														<p>At Vero Eos Et Accusamus Et Iusto Odio Dignissimos
+															Ducimus Qui Blanditiis Praesentium Voluptatum
+															Deleniti Atque Corrupti Quos Dolores Et Quas
+															Molestias Excepturi Sint Occaecati Cupiditate Non
+															Provident.</p>
+													</div>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="reviews-box">
+												<div class="review-body">
+													<div class="review-avatar">
+														<img alt="" src="{% static "assets/img/user-4.jpg" %}"
+															class="avatar avatar-140 photo">
+													</div>
+													<div class="review-content">
+														<div class="review-info">
+															<div class="review-comment">
+																<div class="review-author">
+																	Mariya Merry
+																</div>
+																<div class="review-comment-stars">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star empty"></i>
+																</div>
+															</div>
+															<div class="review-comment-date">
+																<div class="review-date">
+																	<span>3 weeks ago</span>
+																</div>
+															</div>
+														</div>
+														<p>At Vero Eos Et Accusamus Et Iusto Odio Dignissimos
+															Ducimus Qui Blanditiis Praesentium Voluptatum
+															Deleniti Atque Corrupti Quos Dolores Et Quas
+															Molestias Excepturi Sint Occaecati Cupiditate Non
+															Provident.</p>
+													</div>
+												</div>
+											</div>
+										</li>
+
+										<li>
+											<div class="reviews-box">
+												<div class="review-body">
+													<div class="review-avatar">
+														<img alt="" src="{% static "assets/img/user-5.jpg" %}"
+															class="avatar avatar-140 photo">
+													</div>
+													<div class="review-content">
+														<div class="review-info">
+															<div class="review-comment">
+																<div class="review-author">
+																	Wadden Will
+																</div>
+																<div class="review-comment-stars">
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star"></i>
+																	<i class="fa fa-star empty"></i>
+																</div>
+															</div>
+															<div class="review-comment-date">
+																<div class="review-date">
+																	<span>5 weeks ago</span>
+																</div>
+															</div>
+														</div>
+														<p>At Vero Eos Et Accusamus Et Iusto Odio Dignissimos
+															Ducimus Qui Blanditiis Praesentium Voluptatum
+															Deleniti Atque Corrupti Quos Dolores Et Quas
+															Molestias Excepturi Sint Occaecati Cupiditate Non
+															Provident.</p>
+													</div>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+
+							<div class="review-wrapper">
+								<div class="review-wrapper-header">
+									<h4>Rate &amp; Write Reviews</h4>
+								</div>
+								<div class="review-wrapper-body">
+
+									<div class="row mb-3">
+										<div class="col-md-12">
+											<div class="rating-opt">
+												<div class="jr-ratenode jr-nomal"></div>
+												<div class="jr-ratenode jr-nomal "></div>
+												<div class="jr-ratenode jr-nomal "></div>
+												<div class="jr-ratenode jr-nomal "></div>
+												<div class="jr-ratenode jr-nomal "></div>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-6 form-group">
+											<input type="text" class="form-control" placeholder="Your Name*">
+										</div>
+										<div class="col-sm-6 form-group">
+											<input type="email" class="form-control"
+												placeholder="Email Address*">
+										</div>
+										<div class="col-sm-12 form-group">
+											<textarea class="form-control height-110"
+												placeholder="Tell us your experience..."></textarea>
+										</div>
+										<div class="col-sm-12">
+											<button type="button" class="btn btn-primary">Submit your
+												review</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>
+<!-- =========================== Product Detail =================================== -->
+
+{% if similar_products %}
+<!-- =========================== Related Products =================================== -->
+<section class="gray related-products">
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12 mb-2">
+				<h4>Oxşar Məhsullar</h4>
+			</div>
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-12 col-md-12">
+				<div class="owl-carousel products-slider owl-theme">
+
+					{% for similar_product in similar_products %}
+					<!-- Single Item -->
+					<div class="item">
+						<div class="woo_product_grid">
+							{% if similar_product.is_new %}
+							<span class="woo_pr_tag new">Yeni</span>
+							{% endif %}
+							{% if similar_product.discounted_price %}
+							<span class="woo_offer_sell">{{ similar_product.discount.percent }} Endirim</span>
+							{% endif %}
+							<div class="woo_product_thumb">
+								<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
+									class="img-fluid" alt="" />
+							</div>
+							<div class="woo_product_caption center">
+								<div class="woo_rate">
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="woo_title">
+									<h4 class="woo_pro_title"><a href="{% url "product_detail_view" slug=similar_product.slug %}">
+										{{ similar_product.title }}
+									</a>
+									</h4>
+								</div>
+								<div class="woo_price">
+									<h6>
+										{% if similar_product.discounted_price %}
+										{{ similar_product.discounted_price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+										<span class="less_price">{{ similar_product.price }} <i style="font-size: 12px;" class="fa-solid fa-manat-sign"></i></span>
+										{% else %}
+											{{ similar_product.price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+										{% endif %}
+									</h6>
+								</div>
+							</div>
+							<div class="woo_product_cart hover">
+								<ul>
+									<li><a href="{% url "product_detail_view" slug=similar_product.slug %}" data-toggle="modal"
+											data-target="#viewproduct-over" class="woo_cart_btn btn_cart"><i
+												class="ti-eye"></i></a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- =========================== Related Products =================================== -->
+{% endif %}
+
+{% endblock content %}

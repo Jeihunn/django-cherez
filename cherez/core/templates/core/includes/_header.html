@@ -1,6 +1,5 @@
 {% load static %}
 
-<!-- Start Navigation -->
 <div class="header">
     <!-- Topbar -->
     <div class="header_topbar dark">
@@ -59,9 +58,9 @@
                                 <li {% if request.resolver_match.url_name == 'about_us_view' %}class="active"{% endif %}>
                                     <a href="{% url "about_us_view" %}">Haqqımızda<span class="submenu-indicator"></span></a>
                                 </li>
-                                <li><a href="products.html">Məhsullar<span class="submenu-indicator"></span></a>
+                                <li><a href="{% url "product_list_view" %}">Məhsullar<span class="submenu-indicator"></span></a>
                                     <ul class="nav-dropdown nav-submenu">
-                                        <li><a href="products.html">Çərəzlər</a></li>
+                                        <li><a href="{% url "product_list_view" %}">Çərəzlər</a></li>
                                         <li><a href="products.html">Quru meyvələr</a></li>
                                         <li><a href="products.htm">Toxumlular</a></li>
                                         <li><a href="products.html">Qurudulmuş</a></li>
@@ -124,4 +123,3 @@
     </div>
 
 </div>
-<!-- End Navigation -->

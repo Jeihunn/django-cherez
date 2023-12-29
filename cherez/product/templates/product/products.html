@@ -1,0 +1,363 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- =========================== Breadcrumbs =================================== -->
+<div class="breadcrumbs_wrap dark">
+	<div class="container">
+		<div class="row align-items-center">
+
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				<div class="text-center">
+					<h2 class="breadcrumbs_title">Fresh Vegetables</h2>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="#">Vegetables</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Fresh Vegetables</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!-- =========================== Breadcrumbs =================================== -->
+
+
+<!-- =========================== Search Products =================================== -->
+<section>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-12 col-md-12">
+				<div class="filter_search_opt">
+					<a href="javascript:void(0);" onclick="openFilterSearch()"><i class="ti-reload"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<div class="row products-area">
+
+			<!-- Single Product -->
+			<div class="col-lg-3 col-md-12">
+				<div class="search-sidebar sm-sidebar" id="filter_search" style="left:0;">
+					<div class="search-sidebar_header">
+						<h4 class="ssh_heading">Close Filter</h4>
+						<button onclick="closeFilterSearch()" class="w3-bar-item w3-button w3-large"><i
+								class="ti-close"></i></button>
+					</div>
+					<div class="search-sidebar-body">
+
+						<!-- Categoriya filter-->
+						<div class="single_search_boxed">
+							<div class="widget-boxed-header category-header">
+								<h4 class="ml-4 mt-4">Kateqorilər</h4>
+							</div>
+							<div class="widget-boxed-body">
+								<div class="side-list no-border">
+									<div class="filter-card" id="shop-categories">
+
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<h5><a href="#shoes" data-toggle="collapse" class="collapsed"
+													aria-expanded="false" role="button">Shoes<i
+														class="accordion-indicator ti-angle-down"></i></a></h5>
+
+											<div class="collapse" id="shoes" data-parent="#shop-categories">
+												<div class="card-body">
+													<div class="inner_widget_link">
+														<ul>
+															<li><a href="#">Pumps & high Heals<span></span></a>
+															</li>
+															<li><a href="#">Sandels<span></span></a></li>
+															<li><a href="#">Sneakers<span></span></a></li>
+															<li><a href="#">Boots<span></span></a></li>
+															<li><a href="#">Casual Shoes<span></span></a></li>
+															<li><a href="#">Flats Sandel<span></span></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<h5><a href="#clothing" data-toggle="collapse" class=""
+													aria-expanded="false" role="button">Clothing<i
+														class="accordion-indicator ti-angle-down"></i></a></h5>
+
+											<div class="collapse show" id="clothing"
+												data-parent="#shop-categories">
+												<div class="card-body">
+													<div class="inner_widget_link">
+														<ul>
+															<li><a href="#">Blazers<span></span></a></li>
+															<li><a href="#">Men Suits<span></span></a></li>
+															<li><a href="#">Blouses<span></span></a></li>
+															<li><a href="#">Coat Pant<span></span></a></li>
+															<li><a href="#">T-Shirts<span></span></a></li>
+															<li><a href="#">Men Shirts<span></span></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<h5><a href="#watches" data-toggle="collapse" class="collapsed"
+													aria-expanded="false" role="button">Watches<i
+														class="accordion-indicator ti-angle-down"></i></a></h5>
+
+											<div class="collapse" id="watches" data-parent="#shop-categories">
+												<div class="card-body">
+													<div class="inner_widget_link">
+														<ul>
+															<li><a href="#">Sport Watches<span></span></a></li>
+															<li><a href="#">Casual Watches<span></span></a></li>
+															<li><a href="#">Fashion Watches<span></span></a>
+															</li>
+															<li><a href="#">Girls Watches<span></span></a></li>
+															<li><a href="#">Smart Watches<span></span></a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<h5><a href="#bags" data-toggle="collapse" class="collapsed"
+													aria-expanded="false" role="button">Bags<i
+														class="accordion-indicator ti-angle-down"></i></a></h5>
+
+											<div class="collapse" id="bags" data-parent="#shop-categories">
+												<div class="card-body">
+													<div class="inner_widget_link">
+														<ul>
+															<li><a href="#">Casual Bags</a></li>
+															<li><a href="#">Sport Bags</a></li>
+															<li><a href="#">Lugges bag</a></li>
+															<li><a href="#">Fashion Bags</a></li>
+															<li><a href="#">Small bags</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<h5><a href="#accessories" data-toggle="collapse" class="collapsed"
+													aria-expanded="false" role="button">Accessories<i
+														class="accordion-indicator ti-angle-down"></i></a></h5>
+
+											<div class="collapse" id="accessories"
+												data-parent="#shop-categories">
+												<div class="card-body">
+													<div class="inner_widget_link">
+														<ul>
+															<li><a href="#">Men Wallet</a></li>
+															<li><a href="#">Men Belt</a></li>
+															<li><a href="#">Hats</a></li>
+															<li><a href="#">Jwelery</a></li>
+															<li><a href="#">Beauty</a></li>
+															<li><a href="#">Cosmetic</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- Price Range -->
+						<div class="single_search_boxed">
+							<div class="widget-boxed-header">
+								<h4><a href="#pricing" data-toggle="collapse" aria-expanded="false"
+										role="button">Qiymət</a></h4>
+							</div>
+							<dd class="odd">
+								<form class="form" action="">
+									<input class="number" type="number" placeholder="min...">
+									<input class="number" type="number" placeholder="max...">
+									<button>Filtirle</button>
+
+								</form>
+							</dd>
+						</div>
+
+						<!-- Single Option -->
+						<div class="single_search_boxed">
+							<div class="widget-boxed-header">
+								<h4><a href="#brands" data-toggle="collapse" aria-expanded="false"
+										role="button">Brendler</a></h4>
+							</div>
+							<div class="widget-boxed-body collapse show" id="brands" data-parent="#brands">
+								<div class="side-list no-border">
+									<!-- Single Filter Card -->
+									<div class="single_filter_card">
+										<div class="card-body pt-0">
+											<div class="inner_widget_link">
+												<ul class="no-ul-list">
+													<li>
+														<input id="b1" class="checkbox-custom" name="b1"
+															type="checkbox">
+														<label for="b1"
+															class="checkbox-custom-label">Sumsung<span></span></label>
+													</li>
+													<li>
+														<input id="b2" class="checkbox-custom" name="b2"
+															type="checkbox">
+														<label for="b2"
+															class="checkbox-custom-label">Apple<span></span></label>
+													</li>
+													<li>
+														<input id="b3" class="checkbox-custom" name="b3"
+															type="checkbox">
+														<label for="b3"
+															class="checkbox-custom-label">Nike<span></span></label>
+													</li>
+													<li>
+														<input id="b4" class="checkbox-custom" name="b4"
+															type="checkbox">
+														<label for="b4"
+															class="checkbox-custom-label">Reebok<span></span></label>
+													</li>
+													<li>
+														<input id="b5" class="checkbox-custom" name="b5"
+															type="checkbox">
+														<label for="b5"
+															class="checkbox-custom-label">Hawai<span></span></label>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="col-lg-9 col-md-12">
+
+				<!-- Banner -->
+
+				<!-- Shorter Toolbar -->
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="toolbar toolbar-products">
+							<div class="toolbar-sorter sorter">
+								Göstərir: <span>{{ products|length }}</span>
+							</div>
+
+							<div class="field limiter">
+								<label class="label" for="limiter">
+									<span>Sırala:</span>
+								</label>
+								<div class="control">
+									<select id="limiter" data-role="limiter" class="limiter-options">
+										<option class="hidn" value="10" selected="selected">Önərilən sıralama
+										</option>
+										<option value="5">Məhsulun adı A-Z</option>
+										<option value="5">Məhsulun adı Z-A</option>
+										<option value="5">Qiymət (Azdan Çoxa)</option>
+										<option value="5">Qiymət (Çoxdan Aza)</option>
+									</select>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<!-- row -->
+				<div class="row row-right">
+
+					{% for product in products %}
+					<!-- Single Item -->
+					<div class="col-lg-3 col-md-3 col-sm-4 c-product-item">
+						<div class="woo_product_grid">
+							{% if product.is_new %}
+							<span class="woo_pr_tag new">Yeni</span>
+							{% endif %}
+							{% if product.discounted_price %}
+							<span class="woo_offer_sell">{{ product.discount.percent }} Endirim</span>
+							{% endif %}
+							<div class="woo_product_thumb">
+								<img style="aspect-ratio: 500/500;" src="{% static "assets/img/vegetables/1.png" %}"
+									class="img-fluid" alt="" />
+							</div>
+							<div class="woo_product_caption center">
+								<div class="woo_rate">
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star filled"></i>
+									<i class="fa fa-star"></i>
+								</div>
+								<div class="woo_title">
+									<h4 class="woo_pro_title"><a href="{% url "product_detail_view" slug=product.slug %}">{{ product.title }}</a>
+									</h4>
+								</div>
+								<div class="woo_price">
+									<h6>
+									{% if product.discounted_price %}
+										{{ product.discounted_price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+										<span class="less_price">{{ product.price }} <i style="font-size: 12px;" class="fa-solid fa-manat-sign"></i></span>
+									{% else %}
+										{{ product.price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+									{% endif %}
+									</h6>
+								</div>
+							</div>
+							<div class="woo_product_cart hover">
+								<ul>
+									<li><a href="{% url "product_detail_view" slug=product.slug %}" class="woo_cart_btn btn_cart"><i
+												class="ti-eye"></i></a></li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+
+				</div>
+				<!-- row -->
+
+				<div class="row">
+					<div class="col-lg-12">
+						<nav aria-label="Page navigation example">
+							<ul class="pagination">
+								<li class="page-item left">
+
+								</li>
+								<li class="page-item"><a class="page-link" href="#">1</a></li>
+								<li class="page-item active"><a class="page-link" href="#">2</a></li>
+								<li class="page-item"><a class="page-link" href="#">3</a></li>
+								<li class="page-item right">
+
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- =========================== Search Products =================================== -->
+{% endblock content %}	
+
+
+
