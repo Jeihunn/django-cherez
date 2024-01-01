@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.utils.translation import gettext_lazy as _
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -17,7 +18,7 @@ def product_list_view(request):
 
     # Pagination
     page = request.GET.get('page', 1)
-    paginator = Paginator(products, 2)  # Show 10 products per page
+    paginator = Paginator(products, 10)  # Show 10 products per page
 
     try:
         products = paginator.page(page)

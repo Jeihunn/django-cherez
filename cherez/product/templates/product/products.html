@@ -247,6 +247,7 @@
 				</div>
 
 				<!-- Pagination -->
+				{% if products.has_other_pages %}
 				<div class="row">
 					<div class="pagination" id="pagination-products" style="display: flex; justify-content: center;">
 
@@ -267,6 +268,7 @@
 						{% endif %}
 					</div>
 				</div>
+				{% endif %}
 
 			</div>
 
