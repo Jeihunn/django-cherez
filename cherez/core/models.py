@@ -79,3 +79,81 @@ class Subscriber(TimeStampedModel):
     class Meta:
         verbose_name = _("Abunə")
         verbose_name_plural = _("Abunələr")
+
+
+class SiteInfo(TimeStampedModel):
+    name = models.CharField(
+        verbose_name=_("Ad"),
+        max_length=100,
+    )
+    logo = models.ImageField(
+        verbose_name=_("Logo"),
+        upload_to="site_info/",
+    )
+    favicon = models.ImageField(
+        verbose_name=_("Favicon"),
+        upload_to="site_info/",
+    )
+    email1 = models.EmailField(
+        verbose_name=_("E-poçt 1"),
+        max_length=100
+    )
+    email2 = models.EmailField(
+        verbose_name=_("E-poçt 2"),
+        max_length=100
+    )
+    phone_number1 = models.CharField(
+        verbose_name=_("Telefon nömrəsi 1"),
+        max_length=50
+    )
+    phone_number2 = models.CharField(
+        verbose_name=_("Telefon nömrəsi 2"),
+        max_length=50
+    )
+    address = models.CharField(
+        verbose_name=_("Ünvan"),
+        max_length=255
+    )
+    map = models.CharField(
+        verbose_name=_("Xəritə"),
+        max_length=255,
+        blank=True,
+        null=True
+    )
+    facebook_url = models.URLField(
+        verbose_name=_("Facebook URL"),
+        blank=True,
+        null=True
+    )
+    whatsapp_url = models.URLField(
+        verbose_name=_("Whatsapp URL"),
+        blank=True,
+        null=True
+    )
+    instagram_url = models.URLField(
+        verbose_name=_("Instagram URL"),
+        blank=True,
+        null=True
+    )
+    linkedin_url = models.URLField(
+        verbose_name=_("Linkedin URL"),
+        blank=True,
+        null=True
+    )
+    tiktok_url = models.URLField(
+        verbose_name=_("Tiktok URL"),
+        blank=True,
+        null=True
+    )
+    telegram_url = models.URLField(
+        verbose_name=_("Telegram URL"),
+        blank=True,
+        null=True
+    )
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        verbose_name = _("Sayt məlumatı")
+        verbose_name_plural = _("Sayt məlumatları")

@@ -3,7 +3,8 @@ from django.contrib import admin
 from .models import (
     FAQ,
     Contact,
-    Subscriber
+    Subscriber,
+    SiteInfo
 )
 
 
@@ -55,3 +56,8 @@ class SubscriberAdmin(admin.ModelAdmin):
         'id',
         'email',
     )
+
+
+@admin.register(SiteInfo)
+class SiteInfoAdmin(admin.ModelAdmin):
+    pass
