@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from django.utils.translation import gettext_lazy as _
 from pathlib import Path
 import os
 
@@ -48,6 +49,7 @@ THIRD_PARTY_APPS = [
     "django_extensions",
     "ckeditor",
     "widget_tweaks",
+    "rosetta",
 ]
 
 MY_APPS = [
@@ -62,6 +64,7 @@ INSTALLED_APPS = INITIAL_APPS + BASE_APPS + THIRD_PARTY_APPS + MY_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    "django.middleware.locale.LocaleMiddleware",  # Multilanguage
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -136,9 +139,9 @@ USE_TZ = True
 USE_L10N = True
 
 LANGUAGES = [
-    ("az", "Azerbaijani"),
-    ("en", "English"),
-    ("ru", "Russian"),
+    ("az", _("Azerbaijani")),
+    ("en", _("English")),
+    ("ru", _("Russian")),
 ]
 
 LOCALE_PATHS = [

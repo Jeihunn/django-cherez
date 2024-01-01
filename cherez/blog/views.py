@@ -28,7 +28,7 @@ def blog_list_view(request):
         blog_posts = blog_posts.filter(title__icontains=query)
 
     # Pagination
-    page_size = 2
+    page_size = 10
     paginator = Paginator(blog_posts, page_size)
     page = request.GET.get("page", 1)
 
