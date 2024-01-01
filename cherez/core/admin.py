@@ -3,6 +3,7 @@ from django.contrib import admin
 from .models import (
     FAQ,
     Contact,
+    Subscriber
 )
 
 
@@ -39,4 +40,18 @@ class ContactAdmin(admin.ModelAdmin):
         'id',
         'name',
         "phone_number",
+    )
+
+
+@admin.register(Subscriber)
+class SubscriberAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'email',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = (
+        'id',
+        'email',
     )

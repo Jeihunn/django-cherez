@@ -2,10 +2,12 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
+from django.http import JsonResponse
 
-from .forms import ContactForm
+from .forms import ContactForm, SubscriberForm
 from .models import (
     FAQ,
+    Subscriber
 )
 
 
@@ -43,3 +45,16 @@ def contact_us_view(request):
         "form": form,
     }
     return render(request, 'core/contact-us.html', context)
+
+
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriberForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            return JsonResponse({'success': True}, status=200)
+        else:
+            email_errors = form.errors.get('email', [])
+            return JsonResponse({'success': False, 'email_errors': email_errors})
+    return JsonResponse({'message': _('Etibarsız sorğu!')}, status=400)

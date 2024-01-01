@@ -60,3 +60,22 @@ class Contact(TimeStampedModel):
     class Meta:
         verbose_name = _("Əlaqə")
         verbose_name_plural = _("Əlaqələr")
+
+
+class Subscriber(TimeStampedModel):
+    email = models.EmailField(
+        verbose_name=_("E-poçt"),
+        max_length=100,
+        unique=True,
+    )
+    subscription_status = models.BooleanField(
+        verbose_name=_("Abunə statusu"),
+        default=True
+    )
+
+    def __str__(self):
+        return self.email
+
+    class Meta:
+        verbose_name = _("Abunə")
+        verbose_name_plural = _("Abunələr")
