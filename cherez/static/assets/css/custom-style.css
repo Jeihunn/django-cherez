@@ -21,3 +21,9 @@
 #pagination-products a.active{
   border: 1px solid #000;
 }
+
+#language-selector select{
+  background-color: #976418;
+  color: #fff;
+  border: 0;
+}

@@ -1,22 +1,29 @@
 {% load static %}
+{% load i18n %}
 
 <div class="header">
     <!-- Topbar -->
     <div class="header_topbar dark">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex align-items-center">
 
                 <div class="col-lg-6 col-md-6 col-sm-6 col-4">
-                    <ul class="tp-list nbr ml-2">
-                        <li class="dropdown dropdown-currency hidden-xs hidden-sm">
-                            <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Eng<i
-                                    class="ml-1 fa fa-angle-down"></i></a>
-                            <ul class="dropdown-menu mlix-wrap">
-                                <li><a href="#">AZE</a></li>
-                                <li><a href="#">RU</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+                    <!-- MULTILANGUAGE  -->
+                    <div id="language-selector">
+                        <form action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
+                            <select name="language" onchange="this.form.submit()">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                {{ language.code|upper }}
+                                </option>
+                            {% endfor %}
+                            </select>
+                        </form>
+                    </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6 col-8">
                     <div class="topbar_menu">
