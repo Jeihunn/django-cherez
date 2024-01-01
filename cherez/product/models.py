@@ -89,6 +89,9 @@ class Product(TimeStampedModel):
         null=True,
         blank=True
     )
+    short_description = models.TextField(
+        verbose_name=_("Qısa açıqlama"),
+    )
     description = models.TextField(
         verbose_name=_("Açıqlama"),
     )
