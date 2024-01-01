@@ -1,8 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
-from django.http import JsonResponse
-from django.http import Http404
+from django.http import JsonResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import BlogPost, BlogCategory

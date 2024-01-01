@@ -13,3 +13,11 @@
 #load-more-btn:hover {
   background-color: #976418;
 }
+
+#pagination-products a{
+  color: #000;
+}
+
+#pagination-products a.active{
+  border: 1px solid #000;
+}

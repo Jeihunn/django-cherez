@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404
+from django.http import Http404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import (
     Product,
@@ -12,6 +14,17 @@ def product_list_view(request):
     ordering = request.GET.get('ordering', '-created_at')
 
     products = Product.objects.filter(is_active=True).order_by(ordering)
+
+    # Pagination
+    page = request.GET.get('page', 1)
+    paginator = Paginator(products, 2)  # Show 10 products per page
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        raise Http404(_("Invalid page number."))
+    except EmptyPage:
+        raise Http404(_("Invalid page number."))
 
     parent_categories = ProductCategory.objects.filter(parent__isnull=True)
 
