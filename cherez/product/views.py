@@ -13,8 +13,12 @@ from .models import (
 
 def product_list_view(request):
     ordering = request.GET.get('ordering', '-created_at')
+    query = request.GET.get("query")
 
     products = Product.objects.filter(is_active=True).order_by(ordering)
+
+    if query:
+        products = products.filter(title__icontains=query)
 
     # Pagination
     page = request.GET.get('page', 1)

@@ -107,13 +107,15 @@
                     </div>
                     <div class="collapse" id="mySearch">
                         <div class="blocks search_blocks">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Məhsul axtarın...">
-                                <div class="input-group-append">
-                                    <button class="btn search_btn" type="button"><i
-                                            class="ti-search"></i></button>
+                            <form action="{% url "product_list_view" %}">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="query" placeholder="Məhsul axtarın...">
+                                    <div class="input-group-append">
+                                        <button class="btn search_btn" type="submit"><i
+                                                class="ti-search"></i></button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
