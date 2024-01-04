@@ -5,7 +5,8 @@ from .models import (
     ProductCategory,
     Product,
     ProductImage,
-    Discount
+    Discount,
+    ProductAdditional
 )
 
 
@@ -29,8 +30,16 @@ class ProductCategoryAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline,]
+    autocomplete_fields = ["additionals"]
 
 
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
     pass
+
+
+@admin.register(ProductAdditional)
+class ProductAdditionalAdmin(admin.ModelAdmin):
+    search_fields = ["title"]
+    list_display = ["title", "parent"]
+    list_display_links = list_display

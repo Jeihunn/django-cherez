@@ -113,6 +113,12 @@ class Product(TimeStampedModel):
         null=True,
         blank=True
     )
+    additionals = models.ManyToManyField(
+        "product.ProductAdditional",
+        help_text="Boş qala bilər",
+        blank=True,
+        verbose_name="Məhsulun əlavə özəllikləri",
+    )
     short_description = models.TextField(
         verbose_name=_("Qısa açıqlama"),
     )
@@ -215,3 +221,52 @@ class Discount(TimeStampedModel):
 
     def __str__(self):
         return f"{self.title} - ({self.percent}%)"
+
+
+class ProductAdditional(TimeStampedModel):
+    parent = models.ForeignKey(
+        "self",
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+        related_name="children",
+        verbose_name=_("Üst Dəyəri"),
+    )
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=255
+    )
+    slug = models.SlugField(
+        verbose_name=_("Slug"),
+        unique=True,
+        editable=False
+    )
+
+    def clean(self):
+        # Generate a unique slug if it's not set
+        if not self.slug:
+            try:
+                self.slug = create_unique_slug(
+                    self, "title", empty_error_msg=_("Slug dəyəri boş ola bilməz. Başlığı düzəldin.")
+                )
+            except ValueError as e:
+                raise ValidationError(str(e))
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        result = ""
+        if len(self.title) > 100:
+            result = f"{self.title[:100]}..."
+        else:
+            result = self.title
+        if self.parent:
+            result += f" - [{self.parent}]"
+
+        return result
+
+    class Meta:
+        verbose_name = _("Məhsulun Əlavə özəlliyi")
+        verbose_name_plural = _("Məhsulun Əlavə özəllikləri")
