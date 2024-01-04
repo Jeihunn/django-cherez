@@ -60,7 +60,7 @@
 								<div class="side-list no-border">
 									<div class="filter-card" id="shop-categories">
 
-										{% for category in parent_categories %}
+										{% for category in parent_null_categories %}
 										<!-- Single Filter Card -->
 										<div class="single_filter_card">
 											<h5>
@@ -107,56 +107,34 @@
 							</dd>
 						</div>
 
-						<!-- Single Option -->
-						<div class="single_search_boxed">
-							<div class="widget-boxed-header">
-								<h4><a href="#brands" data-toggle="collapse" aria-expanded="false"
-										role="button">Brendler</a></h4>
-							</div>
-							<div class="widget-boxed-body collapse show" id="brands" data-parent="#brands">
-								<div class="side-list no-border">
-									<!-- Single Filter Card -->
-									<div class="single_filter_card">
-										<div class="card-body pt-0">
-											<div class="inner_widget_link">
-												<ul class="no-ul-list">
-													<li>
-														<input id="b1" class="checkbox-custom" name="b1"
-															type="checkbox">
-														<label for="b1"
-															class="checkbox-custom-label">Sumsung<span></span></label>
-													</li>
-													<li>
-														<input id="b2" class="checkbox-custom" name="b2"
-															type="checkbox">
-														<label for="b2"
-															class="checkbox-custom-label">Apple<span></span></label>
-													</li>
-													<li>
-														<input id="b3" class="checkbox-custom" name="b3"
-															type="checkbox">
-														<label for="b3"
-															class="checkbox-custom-label">Nike<span></span></label>
-													</li>
-													<li>
-														<input id="b4" class="checkbox-custom" name="b4"
-															type="checkbox">
-														<label for="b4"
-															class="checkbox-custom-label">Reebok<span></span></label>
-													</li>
-													<li>
-														<input id="b5" class="checkbox-custom" name="b5"
-															type="checkbox">
-														<label for="b5"
-															class="checkbox-custom-label">Hawai<span></span></label>
-													</li>
-												</ul>
+						{% for additional in parent_null_additionals %}
+							<!-- Single Option -->
+							<div class="single_search_boxed">
+								<div class="widget-boxed-header">
+									<h4><a href="#brands" data-toggle="collapse" aria-expanded="false"
+											role="button">{{ additional.title }}</a></h4>
+								</div>
+								<div class="widget-boxed-body collapse show" id="brands" data-parent="#brands">
+									<div class="side-list no-border">
+										<!-- Single Filter Card -->
+										<div class="single_filter_card">
+											<div class="card-body pt-0">
+												<div class="inner_widget_link">
+													<ul class="no-ul-list">
+														{% for sub_additional in additional.sub_additionals.all %}
+															<li>
+																<input id="{{ sub_additional.slug }}" class="checkbox-custom" name="{{ additional.slug }}" type="checkbox">
+																<label for="{{ sub_additional.slug }}" class="checkbox-custom-label">{{ sub_additional.title }}</label>
+															</li>
+														{% endfor %}
+													</ul>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
+						{% endfor %}
 
 					</div>
 				</div>

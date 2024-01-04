@@ -5,7 +5,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import (
     Product,
-    ProductCategory
+    ProductCategory,
+    ProductAdditional
 )
 
 # Create your views here.
@@ -31,12 +32,14 @@ def product_list_view(request):
     except EmptyPage:
         raise Http404(_("Invalid page number."))
 
-    parent_categories = ProductCategory.objects.filter(parent__isnull=True)
+    parent_null_categories = ProductCategory.objects.filter(parent__isnull=True)
+    parent_null_additionals = ProductAdditional.objects.filter(parent__isnull=True)
 
     context = {
         'products': products,
         'current_ordering': ordering,
-        'parent_categories': parent_categories
+        'parent_null_categories': parent_null_categories,
+        'parent_null_additionals': parent_null_additionals
     }
 
     return render(request, 'product/products.html', context)

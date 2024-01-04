@@ -229,7 +229,7 @@ class ProductAdditional(TimeStampedModel):
         null=True,
         blank=True,
         on_delete=models.CASCADE,
-        related_name="children",
+        related_name="sub_additionals",
         verbose_name=_("Üst Dəyəri"),
     )
     title = models.CharField(
