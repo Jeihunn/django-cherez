@@ -3,6 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
 from django.http import JsonResponse, Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 
 from .models import BlogPost, BlogCategory
 
@@ -25,7 +26,7 @@ def blog_list_view(request):
         blog_posts = blog_posts.filter(category=category)
 
     if query:
-        blog_posts = blog_posts.filter(title__icontains=query)
+       blog_posts = blog_posts.filter(Q(title__icontains=query) | Q(short_description__icontains=query) | Q(content__icontains=query))
 
     # Pagination
     page_size = 10

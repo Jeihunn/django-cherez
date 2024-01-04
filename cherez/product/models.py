@@ -23,6 +23,14 @@ class ProductCategory(TimeStampedModel):
         verbose_name=_("Başlıq"),
         max_length=255
     )
+    show_in_navbar = models.BooleanField(
+        verbose_name=_("Navbarda göstər"),
+        default=False
+    )
+    show_in_footer = models.BooleanField(
+        verbose_name=_("Footerda göstər"),
+        default=False
+    )
     slug = models.SlugField(
         verbose_name=_("Slug"),
         unique=True,
@@ -38,6 +46,16 @@ class ProductCategory(TimeStampedModel):
                 )
             except ValueError as e:
                 raise ValidationError(str(e))
+            
+        if self.parent:
+            if self.show_in_navbar:
+                raise ValidationError({
+                    "show_in_navbar": _("Üst kategoriyaya sahib olan bir kategoriya üçün 'Navbarda göstər' seçimi Doğru ola bilməz.")
+                    })
+            if self.show_in_footer:
+                raise ValidationError({
+                    "show_in_footer": _("Üst kategoriyaya sahib olan bir kategoriya üçün 'Footerda göstər' seçimi Doğru ola bilməz.")
+                    })
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -63,6 +81,12 @@ class Product(TimeStampedModel):
     title = models.CharField(
         verbose_name=_("Başlıq"),
         max_length=255
+    )
+    product_code = models.CharField(
+        verbose_name=_("Məhsul kodu"),
+        max_length=50,
+        null=True,
+        blank=True
     )
     category = models.ForeignKey(
         to="product.ProductCategory",

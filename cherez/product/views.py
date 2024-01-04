@@ -22,7 +22,7 @@ def product_list_view(request):
 
     # Pagination
     page = request.GET.get('page', 1)
-    paginator = Paginator(products, 10)  # Show 10 products per page
+    paginator = Paginator(products, 10)
 
     try:
         products = paginator.page(page)
