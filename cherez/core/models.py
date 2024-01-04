@@ -96,27 +96,34 @@ class SiteInfo(TimeStampedModel):
     )
     email1 = models.EmailField(
         verbose_name=_("E-poçt 1"),
-        max_length=100
+        max_length=100,
+        blank=True,
+        null=True
     )
     email2 = models.EmailField(
         verbose_name=_("E-poçt 2"),
-        max_length=100
+        max_length=100,
+        blank=True,
+        null=True
     )
     phone_number1 = models.CharField(
         verbose_name=_("Telefon nömrəsi 1"),
-        max_length=50
+        max_length=50,
+        blank=True,
+        null=True
     )
     phone_number2 = models.CharField(
         verbose_name=_("Telefon nömrəsi 2"),
-        max_length=50
+        max_length=50,
+        blank=True,
+        null=True
     )
     address = models.CharField(
         verbose_name=_("Ünvan"),
         max_length=255
     )
-    map = models.CharField(
+    map = models.TextField(
         verbose_name=_("Xəritə"),
-        max_length=255,
         blank=True,
         null=True
     )

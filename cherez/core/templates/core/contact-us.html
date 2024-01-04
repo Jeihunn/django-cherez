@@ -1,6 +1,7 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% load widget_tweaks %}
+{% load tags %}
 
 
 {% block content %}
@@ -29,6 +30,7 @@
 <!-- =========================== Breadcrumbs =================================== -->
 
 
+{% get_site_info as site_info %}
 <!-- =========================== Contact Us =================================== -->
 <section class="gray mt-0 pt-lg-5 pt-4">
 	<div class="container">
@@ -37,8 +39,9 @@
 				<div class="contact-box">
 					<i class="fa-solid fa-house"></i>
 					<h4>ÜNVAN</h4>
-					810 Clis Road,<br>
-					Indraprash NW11 0PU, India
+					{% if site_info.address %}
+					{{ site_info.address }}
+					{% endif %}
 				</div>
 			</div>
 
@@ -46,8 +49,13 @@
 				<div class="contact-box">
 					<i class="fa-solid fa-envelope"></i>
 					<h4>E-POÇT</h4>
-					virasat@gmail.com<br>
-					my.virasat@gmail.com
+					{% if site_info.email1 %}
+					{{ site_info.email1 }}
+					<br>
+					{% endif %}
+					{% if site_info.email2 %}
+					{{ site_info.email2 }}
+					{% endif %}
 				</div>
 			</div>
 
@@ -55,8 +63,13 @@
 				<div class="contact-box">
 					<i class="fa-solid fa-phone-volume"></i>
 					<h4>TELEFON</h4>
-					91+ 123 456 9857<br>
-					91+ 258 548 5426
+					{% if site_info.phone_number1 %}
+					{{ site_info.phone_number1 }}
+					<br>
+					{% endif %}
+					{% if site_info.phone_number2 %}
+					{{ site_info.phone_number2 }}
+					{% endif %}
 				</div>
 			</div>
 
@@ -107,7 +120,7 @@
 
 			<div class="col-lg-6 col-md-12 hide-91 c-map">
 				<iframe
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3037.805370222889!2d49.85686917525453!3d40.41316225585773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307db8e976d42b%3A0x4772923e2b16c6b3!2sSaytlar%C4%B1n%20haz%C4%B1rlanmas%C4%B1-%20SMM%20xidm%C9%99ti%20-Khan%20Buta%20Group%20MMC!5e0!3m2!1saz!2saz!4v1702623065324!5m2!1saz!2saz"
+					src="{{ site_info.map }}"
 					width="470" height="400" style="border:0;" allowfullscreen="" loading="lazy"
 					referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>

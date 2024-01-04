@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-lg-4 col-md-4">
                     <div class="footer_widget">
-                        <img class="logo-pics" src="{% static "assets/img/c-logo.png" %}" alt="">
+                        <img class="logo-pics" src="{{ site_info.logo.url }}" alt="">
                         <div> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nobis, sequi aut sunt
                             ea
                             praesentium incidunt aliquam et ducimus illum quidem provident nesciunt dolorum
@@ -80,11 +80,15 @@
 
                         <div class="address_infos">
                             <ul>
-                                <li><i class="ti-home theme-cl"></i>#302 Brick Market, Jalsa
-                                    California<br>United
-                                    State HQS1130</li>
-                                <li><i class="ti-headphone-alt theme-cl"></i>(41) 254 758 4572</li>
-                                <li><i class="fa-solid fa-envelope"></i>khanbuta.group@gmail.com</li>
+                                {% if site_info.address %}
+                                <li><i class="ti-home theme-cl"></i>{{ site_info.address }}</li>
+                                {% endif %}
+                                {% if site_info.phone_number1 %}
+                                <li><i class="ti-headphone-alt theme-cl"></i>{{ site_info.phone_number1 }}</li>
+                                {% endif %}
+                                {% if site_info.email1 %}
+                                <li><i class="fa-solid fa-envelope"></i>{{ site_info.email1 }}</li>
+                                {% endif %}
                             </ul>
                         </div>
                         <div class="col-lg-6 col-md-6 text-right">
