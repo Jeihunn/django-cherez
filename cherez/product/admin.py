@@ -9,10 +9,6 @@ from .models import (
 )
 
 
-
-
-
-
 # Register your models here.
 
 
@@ -20,10 +16,9 @@ from .models import (
 class ProductImageInline(admin.TabularInline):
     model = ProductImage
     extra = 1
-    verbose_name = _("Image")
-    verbose_name_plural = _("Images")
+    verbose_name = _("Şəkil")
+    verbose_name_plural = _("Şəkillər")
 # ========== END Inline ==========
-
 
 
 @admin.register(ProductCategory)

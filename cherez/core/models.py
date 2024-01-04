@@ -120,36 +120,6 @@ class SiteInfo(TimeStampedModel):
         blank=True,
         null=True
     )
-    facebook_url = models.URLField(
-        verbose_name=_("Facebook URL"),
-        blank=True,
-        null=True
-    )
-    whatsapp_url = models.URLField(
-        verbose_name=_("Whatsapp URL"),
-        blank=True,
-        null=True
-    )
-    instagram_url = models.URLField(
-        verbose_name=_("Instagram URL"),
-        blank=True,
-        null=True
-    )
-    linkedin_url = models.URLField(
-        verbose_name=_("Linkedin URL"),
-        blank=True,
-        null=True
-    )
-    tiktok_url = models.URLField(
-        verbose_name=_("Tiktok URL"),
-        blank=True,
-        null=True
-    )
-    telegram_url = models.URLField(
-        verbose_name=_("Telegram URL"),
-        blank=True,
-        null=True
-    )
 
     def __str__(self):
         return self.name
@@ -157,3 +127,29 @@ class SiteInfo(TimeStampedModel):
     class Meta:
         verbose_name = _("Sayt məlumatı")
         verbose_name_plural = _("Sayt məlumatları")
+
+
+class SocialMedia(TimeStampedModel):
+    site_info = models.ForeignKey(
+        "core.SiteInfo",
+        on_delete=models.CASCADE,
+        related_name="social_media_links",
+        verbose_name=_("Sayt məlumatı"),
+    )
+    platform = models.CharField(
+        verbose_name=_("Platform"),
+        max_length=50,
+        choices=[
+            ("facebook", "Facebook"),
+            ("whatsapp", "Whatsapp"),
+            ("instagram", "Instagram"),
+            ("linkedin", "Linkedin"),
+            ("tiktok", "Tiktok"),
+            ("telegram", "Telegram"),
+            # Add other social media platforms if needed
+        ]
+    )
+    url = models.URLField(
+        verbose_name=_("URL"),
+        max_length=255
+    )

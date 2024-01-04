@@ -2,6 +2,7 @@
 {% load i18n %}
 {% load tags %}
 
+{% get_site_info as site_info %}
 <div class="header">
     <!-- Topbar -->
     <div class="header_topbar dark">
@@ -26,18 +27,30 @@
                         </form>
                     </div>
                 </div>
+
+                {% if site_info.social_media_links.all %}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-8">
                     <div class="topbar_menu">
                         <ul class="footer_social_links social">
-                            <li><a href="#"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
-                            <li><a href="#"><i class="ti-twitter"></i></a></li>
-                            <li><a href="#"><i class="ti-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
-
+                            {% for link in site_info.social_media_links.all %}
+                            {% if link.platform == 'facebook' %}
+                            <li><a href="{{ link.url }}"><i class="ti-facebook"></i></a></li>
+                            {% elif link.platform == 'whatsapp' %}
+                            <li><a href="{{ link.url }}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            {% elif link.platform == 'instagram' %}
+                            <li><a href="{{ link.url }}"><i class="ti-instagram"></i></a></li>
+                            {% elif link.platform == 'linkedin' %}
+                            <li><a href="{{ link.url }}"><i class="ti-linkedin"></i></a></li>
+                            {% elif link.platform == 'tiktok' %}
+                            <li><a href="{{ link.url }}"><i class="fa-brands fa-tiktok"></i></a></li>
+                            {% elif link.platform == 'telegram' %}
+                            <li><a href="{{ link.url }}"><i class="fa-brands fa-telegram"></i></a></li>
+                            {% endif %}
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>
+                {% endif %}
 
             </div>
         </div>
@@ -49,7 +62,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-8">
                     <a class="nav-brand" href="{% url "index_view" %}">
-                        <img src="{% static "assets/img/c-logo.png" %}" class="logo" alt="" />
+                        <img src="{{ site_info.logo.url }}" class="logo" alt="logo" />
                     </a>
                 </div>
                 <div class="col-lg-7 col-md-7 col-sm-4 col-2">

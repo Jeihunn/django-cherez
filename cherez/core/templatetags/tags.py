@@ -1,5 +1,6 @@
 from django import template
 
+from core.models import SiteInfo
 from product.models import ProductCategory
 
 register = template.Library()
@@ -27,3 +28,9 @@ def get_parent_null_categories():
     """
     parent_null_categories = ProductCategory.objects.filter(parent=None)
     return parent_null_categories
+
+
+@register.simple_tag
+def get_site_info():
+    site_info = SiteInfo.objects.last()
+    return site_info

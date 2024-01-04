@@ -1,14 +1,26 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
+
 
 from .models import (
     FAQ,
     Contact,
     Subscriber,
-    SiteInfo
+    SiteInfo,
+    SocialMedia
 )
 
 
 # Register your models here.
+
+
+# ========== Inline ==========
+class SocialMediaInline(admin.TabularInline):
+    model = SocialMedia
+    extra = 1
+    verbose_name = _("Sosial mediya")
+    verbose_name_plural = _("Sosial mediyalar")
+# ========== END Inline ==========
 
 
 @admin.register(FAQ)
@@ -60,4 +72,4 @@ class SubscriberAdmin(admin.ModelAdmin):
 
 @admin.register(SiteInfo)
 class SiteInfoAdmin(admin.ModelAdmin):
-    pass
+    inlines = [SocialMediaInline,]

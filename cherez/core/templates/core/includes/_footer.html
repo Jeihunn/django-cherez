@@ -1,6 +1,7 @@
 {% load static %}
 {% load tags %}
 
+{% get_site_info as site_info %}
 <footer class="dark-footer skin-dark-footer style-2">
     <div class="before-footer">
         <div class="container">
@@ -88,14 +89,21 @@
                         </div>
                         <div class="col-lg-6 col-md-6 text-right">
                             <ul class="footer_social_links">
-                                <li><a href="#"><i class="ti-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-whatsapp"></i></a></li>
-                                <li><a href="#"><i class="ti-twitter"></i></a></li>
-                                <li><a href="#"><i class="ti-instagram"></i></a></li>
-                                <li><a href="#"><i class="ti-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-tiktok"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
-
+                                {% for link in site_info.social_media_links.all %}
+                                {% if link.platform == 'facebook' %}
+                                <li><a href="{{ link.url }}"><i class="ti-facebook"></i></a></li>
+                                {% elif link.platform == 'whatsapp' %}
+                                <li><a href="{{ link.url }}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                                {% elif link.platform == 'instagram' %}
+                                <li><a href="{{ link.url }}"><i class="ti-instagram"></i></a></li>
+                                {% elif link.platform == 'linkedin' %}
+                                <li><a href="{{ link.url }}"><i class="ti-linkedin"></i></a></li>
+                                {% elif link.platform == 'tiktok' %}
+                                <li><a href="{{ link.url }}"><i class="fa-brands fa-tiktok"></i></a></li>
+                                {% elif link.platform == 'telegram' %}
+                                <li><a href="{{ link.url }}"><i class="fa-brands fa-telegram"></i></a></li>
+                                {% endif %}
+                                {% endfor %}
                             </ul>
                         </div>
                     </div>
