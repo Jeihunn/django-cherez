@@ -118,6 +118,12 @@ class SiteInfo(TimeStampedModel):
         blank=True,
         null=True
     )
+    whatsapp = models.CharField(
+        verbose_name=_("Whatsapp"),
+        max_length=50,
+        blank=True,
+        null=True
+    )
     address = models.CharField(
         verbose_name=_("Ünvan"),
         max_length=255
@@ -148,7 +154,6 @@ class SocialMedia(TimeStampedModel):
         max_length=50,
         choices=[
             ("facebook", "Facebook"),
-            ("whatsapp", "Whatsapp"),
             ("instagram", "Instagram"),
             ("linkedin", "Linkedin"),
             ("tiktok", "Tiktok"),

@@ -28,15 +28,13 @@
                     </div>
                 </div>
 
-                {% if site_info.social_media_links.all %}
+                {% if site_info.social_media_links.all or site_info.whatsapp %}
                 <div class="col-lg-6 col-md-6 col-sm-6 col-8">
                     <div class="topbar_menu">
                         <ul class="footer_social_links social">
                             {% for link in site_info.social_media_links.all %}
                             {% if link.platform == 'facebook' %}
                             <li><a href="{{ link.url }}"><i class="ti-facebook"></i></a></li>
-                            {% elif link.platform == 'whatsapp' %}
-                            <li><a href="{{ link.url }}"><i class="fa-brands fa-whatsapp"></i></a></li>
                             {% elif link.platform == 'instagram' %}
                             <li><a href="{{ link.url }}"><i class="ti-instagram"></i></a></li>
                             {% elif link.platform == 'linkedin' %}
@@ -47,6 +45,9 @@
                             <li><a href="{{ link.url }}"><i class="fa-brands fa-telegram"></i></a></li>
                             {% endif %}
                             {% endfor %}
+                            {% if site_info.whatsapp %}
+                            <li><a href="https://wa.me/{{ site_info.whatsapp }}"><i class="fa-brands fa-whatsapp"></i></a></li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
