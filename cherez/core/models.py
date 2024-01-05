@@ -126,7 +126,9 @@ class SiteInfo(TimeStampedModel):
     )
     address = models.CharField(
         verbose_name=_("Ünvan"),
-        max_length=255
+        max_length=255,
+        blank=True,
+        null=True
     )
     map = models.TextField(
         verbose_name=_("Xəritə"),

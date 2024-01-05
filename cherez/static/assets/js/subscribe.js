@@ -1,3 +1,15 @@
+const languageData = {
+  az: {
+    subscribeSuccess: "Abone oldunuz!",
+  },
+  en: {
+    subscribeSuccess: "You have subscribed!",
+  },
+  ru: {
+    subscribeSuccess: "Вы подписались!",
+  },
+};
+
 const subscribeForm = document.getElementById("subscribeForm");
 const subscribeFormDiv = document.getElementById("subscribe-form-div");
 const emailInput = document.getElementById("emailInput");
@@ -35,7 +47,7 @@ subscribeForm.addEventListener("submit", function (event) {
     .then((data) => {
       console.log("data", data);
       if (data.success) {
-        subscribeFormDiv.textContent = "Abone oldunuz!";
+        subscribeFormDiv.textContent = getLocalizedText("subscribeSuccess");
         subscribeFormDiv.style.fontSize = "30px";
         subscribeFormDiv.style.color = "green";
       } else {
@@ -58,3 +70,8 @@ subscribeForm.addEventListener("submit", function (event) {
 
   return false;
 });
+
+function getLocalizedText(key) {
+  const currentLanguage = window.location.pathname.split("/")[1] || "az"; // Default dil: AZ
+  return languageData[currentLanguage][key] || key;
+}
