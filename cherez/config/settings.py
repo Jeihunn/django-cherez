@@ -42,7 +42,7 @@ BASE_APPS = [
 ]
 
 INITIAL_APPS = [
-
+    "modeltranslation"
 ]
 
 THIRD_PARTY_APPS = [
@@ -148,9 +148,9 @@ LOCALE_PATHS = [
     os.path.join(BASE_DIR, "locale"),
 ]
 
-# # Modeltranslation
-# MODELTRANSLATION_DEFAULT_LANGUAGE = 'az'
-# MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru')
+# Modeltranslation
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'az'
+MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru')
 
 
 # Static files (CSS, JavaScript, Images)
