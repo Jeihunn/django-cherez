@@ -67,7 +67,11 @@
                         <ul class="footer-menu">
                             {% for category in parent_null_categories %}
                             {% if category.show_in_footer %}
-                            <li><a href="{% url "product_list_view" %}">{{ category.title }}</a></li>
+                            <li>
+                                <a href="{% url 'product_list_view' %}{% if category.sub_categories.all %}?{% for sub_category in category.sub_categories.all %}category={{ sub_category.slug }}{% if not forloop.last %}&{% endif %}{% endfor %}{% endif %}">
+                                    {{ category.title }}
+                                </a>
+                            </li>
                             {% endif %}
                             {% endfor %}
                         </ul>

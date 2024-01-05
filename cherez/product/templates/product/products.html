@@ -51,10 +51,11 @@
 					</div>
 					<div class="search-sidebar-body">
 
+					<form class="aa" action="">
 						<!-- Categoriya filter-->
 						<div class="single_search_boxed">
 							<div class="widget-boxed-header category-header">
-								<h4 class="ml-4 mt-4">Kateqorilər</h4>
+								<h4 class="ml-4 mt-4">Kateqoriyalar</h4>
 							</div>
 							<div class="widget-boxed-body">
 								<div class="side-list no-border">
@@ -74,7 +75,8 @@
 													<div class="inner_widget_link">
 														<ul>
 															{% for sub_category in category.sub_categories.all %}
-																<li><a href="#">{{ sub_category.title }}<span></span></a></li>
+																<input id="{{ sub_category.slug }}" class="checkbox-custom" name="category" type="checkbox" value="{{ sub_category.slug }}" {% if sub_category.slug in selected_categories %}checked{% endif %}>
+																<label for="{{ sub_category.slug }}" class="checkbox-custom-label">{{ sub_category.title }}</label>
 															{% endfor %}
 														</ul>
 													</div>
@@ -82,14 +84,12 @@
 											</div>
 										</div>
 										{% endfor %}
-									
-
-
 
 									</div>
 								</div>
 							</div>
 						</div>
+
 
 						<!-- Price Range -->
 						<div class="single_search_boxed">
@@ -98,12 +98,8 @@
 										role="button">Qiymət</a></h4>
 							</div>
 							<dd class="odd">
-								<form class="form" action="">
-									<input class="number" type="number" placeholder="min...">
-									<input class="number" type="number" placeholder="max...">
-									<button>Filtirle</button>
-
-								</form>
+									<input class="number" type="number" placeholder="min..." min="0" name="min_price" value="{{ min_price }}">
+									<input class="number" type="number" placeholder="max..." min="0" name="max_price" value="{{ max_price }}">
 							</dd>
 						</div>
 
@@ -111,10 +107,10 @@
 							<!-- Single Option -->
 							<div class="single_search_boxed">
 								<div class="widget-boxed-header">
-									<h4><a href="#brands" data-toggle="collapse" aria-expanded="false"
+									<h4><a href="#{{ additional.slug }}" data-toggle="collapse" aria-expanded="false"
 											role="button">{{ additional.title }}</a></h4>
 								</div>
-								<div class="widget-boxed-body collapse show" id="brands" data-parent="#brands">
+								<div class="widget-boxed-body collapse show" id="{{ additional.slug }}" data-parent="#{{ additional.slug }}">
 									<div class="side-list no-border">
 										<!-- Single Filter Card -->
 										<div class="single_filter_card">
@@ -123,7 +119,7 @@
 													<ul class="no-ul-list">
 														{% for sub_additional in additional.sub_additionals.all %}
 															<li>
-																<input id="{{ sub_additional.slug }}" class="checkbox-custom" name="{{ additional.slug }}" type="checkbox">
+																<input id="{{ sub_additional.slug }}" class="checkbox-custom" name="additional" type="checkbox" value="{{ sub_additional.slug }}" {% if sub_additional.slug in selected_additionals %}checked{% endif %}>
 																<label for="{{ sub_additional.slug }}" class="checkbox-custom-label">{{ sub_additional.title }}</label>
 															</li>
 														{% endfor %}
@@ -135,6 +131,8 @@
 								</div>
 							</div>
 						{% endfor %}
+						<button type="submit" class="w-100 btn btn-primary">Filtirlə</button>
+					</form>
 
 					</div>
 				</div>
@@ -264,10 +262,9 @@
 
         const urlParams = new URLSearchParams(window.location.search);
 
-        // eger "ordering" parametri varsa onu sil
-        if (urlParams.has('ordering')) {
-            urlParams.delete('ordering');
-        }
+        // "ordering" ve "page" parametrlerini sil
+		urlParams.delete('ordering');
+		urlParams.delete('page');
 
         // secilen ordering deyerini parametrlere elave et
         if (value) {
