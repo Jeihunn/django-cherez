@@ -78,7 +78,13 @@
 					<div class="item">
 						<div class="woo_category_box border_style rounded">
 							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{{ home_category.image.url }}"
+								<a 
+								{% if not home_category.parent %}
+									href="{% url 'product_list_view' %}{% if home_category.sub_categories.all %}?{% for sub_category in home_category.sub_categories.all %}category={{ sub_category.slug }}{% if not forloop.last %}&{% endif %}{% endfor %}{% endif %}"
+								{% else %}
+									href="{% url 'product_list_view' %}?category={{ home_category.slug }}"
+								{% endif %}
+								><img class="category-img img-fluid" src="{{ home_category.image.url }}"
 										alt="" /></a>
 							</div>
 							<div class="woo_cat_caption">
@@ -202,642 +208,91 @@
 <!-- =========================== Customer Reviews =================================== -->
 
 <!-- ======================== Fresh & Fast Fruits Start ==================== -->
-<section>
-	<div class="container">
 
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="sec-heading-flex pl-2 pr-2">
-					<div class="sec-heading-flex-one">
-						<h2>Quru Meyvələr</h2>
+{% for home_category in home_product_categories %}
+	{% if home_category.active_home_products %}
+		<section>
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<div class="sec-heading-flex pl-2 pr-2">
+							<div class="sec-heading-flex-one">
+								<h2>{{ home_category.title }}</h2>
+							</div>
+							<div class="sec-heading-flex-last">
+								<a 
+								{% if not home_category.parent %}
+									href="{% url 'product_list_view' %}{% if home_category.sub_categories.all %}?{% for sub_category in home_category.sub_categories.all %}category={{ sub_category.slug }}{% if not forloop.last %}&{% endif %}{% endfor %}{% endif %}"
+								{% else %}
+									href="{% url 'product_list_view' %}?category={{ home_category.slug }}"
+								{% endif %}
+								class="btn btn-theme">{% trans "Daha çox bax" %}<i class="ti-arrow-right ml-2"></i></a>
+							</div>
+						</div>
 					</div>
-					<div class="sec-heading-flex-last">
-						<a href="#" class="btn btn-theme">Daha çox bax<i class="ti-arrow-right ml-2"></i></a>
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12 col-md-12">
+						<div class="owl-carousel products-slider owl-theme">
+
+							{% for product in home_category.active_home_products %}
+							<!-- Single Item -->
+							<div class="item">
+								<div class="woo_product_grid">
+									{% if product.is_new %}
+									<span class="woo_pr_tag new">Yeni</span>
+									{% endif %}
+									{% if product.discounted_price %}
+									<span class="woo_offer_sell">{{ product.discount.percent }}% {% trans "Endirim" %}</span>
+									{% endif %}
+									<div class="woo_product_thumb">
+										<img src="{{ product.cover_image.url }}" class="img-fluid" alt="" />
+									</div>
+									<div class="woo_product_caption center">
+										<div class="woo_rate">
+											<i class="fa fa-star filled"></i>
+											<i class="fa fa-star filled"></i>
+											<i class="fa fa-star filled"></i>
+											<i class="fa fa-star filled"></i>
+											<i class="fa fa-star"></i>
+										</div>
+										<div class="woo_title">
+											<h4 class="woo_pro_title"><a href="{% url "product_detail_view" slug=product.slug %}">{{ product.title }}</a>
+											</h4>
+										</div>
+										<div class="woo_price">
+											<h6>
+												{% if product.discounted_price %}
+												{{ product.discounted_price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+												<span class="less_price">{{ product.price }} <i style="font-size: 12px;" class="fa-solid fa-manat-sign"></i></span>
+												{% else %}
+													{{ product.price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+												{% endif %}
+											</h6>
+										</div>
+									</div>
+									<div class="woo_product_cart hover">
+										<ul>
+											<li><a href="{% url "product_detail_view" slug=product.slug %}" class="woo_cart_btn btn_cart"><i
+														class="ti-eye"></i></a></li>
+
+										</ul>
+									</div>
+								</div>
+							</div>
+							{% endfor %}
+
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
+	{% endif %}
+{% endfor %}
 
-		<div class="row">
-			<div class="col-lg-12 col-md-12">
-				<div class="owl-carousel products-slider owl-theme">
 
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category1_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category2_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category3_360x.webp" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Yeni</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category4_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category1_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category3_360x.webp" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category4_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_offer_sell">-20%</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category2_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section>
-	<div class="container">
-
-		<div class="row">
-			<div class="col-lg-12 col-md-12 col-sm-12">
-				<div class="sec-heading-flex pl-2 pr-2">
-					<div class="sec-heading-flex-one">
-						<h2>Çərəzlər</h2>
-					</div>
-					<div class="sec-heading-flex-last">
-						<a href="#" class="btn btn-theme">Daha çox bax<i class="ti-arrow-right ml-2"></i></a>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-12 col-md-12">
-				<div class="owl-carousel products-slider owl-theme">
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category1_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category2_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category3_360x.webp" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Yeni</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category4_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category1_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category3_360x.webp" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category4_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_product_grid">
-							<span class="woo_offer_sell">-20%</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/category2_360x.avif" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-	</div>
-</section>
 <div class="clearfix"></div>
 <!-- ======================== Fresh & Fast Fruits End ==================== -->
 

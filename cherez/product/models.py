@@ -56,25 +56,37 @@ class ProductCategory(TimeStampedModel):
                 )
             except ValueError as e:
                 raise ValidationError(str(e))
-            
+
         if self.show_in_home and not self.image:
             raise ValidationError({
                 "image": _("'Ana səhifədə göstər' seçilmişsə, şəkil seçilməlidir.")
             })
-            
+
         if self.parent:
             if self.show_in_navbar:
                 raise ValidationError({
                     "show_in_navbar": _("Üst kategoriyaya sahib olan bir kategoriya üçün 'Navbarda göstər' seçimi Doğru ola bilməz.")
-                    })
+                })
             if self.show_in_footer:
                 raise ValidationError({
                     "show_in_footer": _("Üst kategoriyaya sahib olan bir kategoriya üçün 'Footerda göstər' seçimi Doğru ola bilməz.")
-                    })
+                })
 
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
+
+    @property
+    def active_home_products(self):
+        if self.parent:
+            products = Product.objects.filter(
+                category=self, is_active=True, show_in_home=True)
+        else:
+            subcategories = self.sub_categories.all()
+            products = Product.objects.filter(
+                category__in=subcategories, is_active=True, show_in_home=True)
+
+        return products
 
     def __str__(self):
         result = ""
@@ -181,7 +193,7 @@ class Product(TimeStampedModel):
         if not self.discount or self.discount.is_active is False:
             return None
         return self.price - (self.price * self.discount.percent / 100)
-    
+
     @property
     def active_images(self):
         return self.images.filter(is_active=True)
