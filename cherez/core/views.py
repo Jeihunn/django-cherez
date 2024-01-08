@@ -4,10 +4,18 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib import messages
 from django.http import JsonResponse
 
+from product.models import (
+    ProductCategory,
+    Product
+)
+
+from blog.models import (
+    BlogPost,
+)
+
 from .forms import ContactForm, SubscriberForm
 from .models import (
     FAQ,
-    Subscriber
 )
 
 
@@ -15,9 +23,16 @@ from .models import (
 
 
 def index_view(request):
+    home_product_categories = ProductCategory.objects.filter(show_in_home=True).order_by("-created_at")[:10]
+    home_products = Product.objects.filter(show_in_home=True, is_active=True).order_by("-created_at")[:10]
+
+    latest_blogs = BlogPost.objects.filter(is_active=True).order_by("-created_at")[:7]
+
 
     context = {
-
+        "home_product_categories": home_product_categories,
+        "home_products": home_products,
+        "latest_blogs": latest_blogs
     }
     return render(request, "core/index.html", context)
 

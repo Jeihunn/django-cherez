@@ -73,161 +73,20 @@
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="owl-carousel category-slider owl-theme">
 
+					{% for home_category in home_product_categories %}
 					<!-- Single Item -->
 					<div class="item">
 						<div class="woo_category_box border_style rounded">
 							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/17.webp" %}"
+								<a href="#"><img class="category-img img-fluid" src="{{ home_category.image.url }}"
 										alt="" /></a>
 							</div>
 							<div class="woo_cat_caption">
-								<h4><a href="#">Barberry Black </a></h4>
+								<h4><a href="#">{{ home_category.title }}</a></h4>
 							</div>
 						</div>
 					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#">
-									<img class="category-img img-fluid" src="{% static "assets/img/9.webp" %}" alt="" />
-								</a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Black Cardamom</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/21.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Black Mustard</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/39.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Black Sesame</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/17.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Peper</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/21.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Grocery & Staples</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/9.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Snacks</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/39.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Pets care</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/21.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Pulberry</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/39.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Home Care</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img img-fluid" src="{% static "assets/img/17.webp" %}"
-										alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Noodles & Sauces</a></h4>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="item">
-						<div class="woo_category_box border_style rounded">
-							<div class="woo_cat_thumb">
-								<a href="#"><img class="category-img" src="{% static "assets/img/9.webp" %}" alt="" /></a>
-							</div>
-							<div class="woo_cat_caption">
-								<h4><a href="#">Dry Snacks</a></h4>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 
 				</div>
 			</div>
@@ -246,8 +105,8 @@
 		<div class="row">
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="sec-heading center">
-					<span class="theme-cl">Fresh Fruits on Your Home</span>
-					<h2 class="grocery_title">Fresh Online Store</h2>
+					<span class="theme-cl">{% trans "Evinizdə Təzə Meyvələr" %}</span>
+					<h2 class="grocery_title">{% trans "Online Mağaza" %}</h2>
 				</div>
 			</div>
 		</div>
@@ -256,274 +115,19 @@
 			<div class="col-lg-12 col-md-12">
 				<div class="row">
 
+
+					{% for home_product in home_products %}
 					<!-- Single Item -->
 					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
 						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<span class="woo_offer_sell">-20%</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/2_b06c86af-977d-4e56-9eb8-6e84a21b7f47_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/5_470x.webp" %}" class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<span class="woo_offer_sell">-20%</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<span class="woo_offer_sell">-20%</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/4_f7876c53-7f18-4ed6-bd52-811252e606fe_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/4_f7876c53-7f18-4ed6-bd52-811252e606fe_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.<i
-												style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 12px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
-							<span class="woo_pr_tag new">Acı</span>
-							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/2_b06c86af-977d-4e56-9eb8-6e84a21b7f47_470x.webp" %}"
-									class="img-fluid" alt="" />
-							</div>
-							<div class="woo_product_caption center">
-								<div class="woo_rate">
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star filled"></i>
-									<i class="fa fa-star"></i>
-								</div>
-								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
-									</h4>
-								</div>
-								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
-								</div>
-							</div>
-							<div class="woo_product_cart hover">
-								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
-												class="ti-eye"></i></a></li>
-
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<!-- Single Item -->
-					<div class="col-lg-3 col-md-4 col-sm-6 col-6">
-						<div class="woo_product_grid">
+							{% if home_product.is_new %}
 							<span class="woo_pr_tag new">Yeni</span>
+							{% endif %}
+							{% if home_product.discounted_price %}
+							<span class="woo_offer_sell">{{ home_product.discount.percent }}% {% trans "Endirim" %}</span>
+							{% endif %}
 							<div class="woo_product_thumb">
-								<img src="{% static "assets/img/4_f7876c53-7f18-4ed6-bd52-811252e606fe_470x.webp" %}"
+								<img src="{{ home_product.cover_image.url }}"
 									class="img-fluid" alt="" />
 							</div>
 							<div class="woo_product_caption center">
@@ -535,26 +139,30 @@
 									<i class="fa fa-star"></i>
 								</div>
 								<div class="woo_title">
-									<h4 class="woo_pro_title"><a href="product-details.html">Accumsan Tree
-											Fusce</a>
+									<h4 class="woo_pro_title"><a href="{% url "product_detail_view" home_product.slug %}">{{ home_product.title }}</a>
 									</h4>
 								</div>
 								<div class="woo_price">
-									<h6>72.47<i style="font-size: 14px;"
-											class="fa-solid fa-manat-sign"></i><span class="less_price">112.10
-											<i style="font-size: 14px;"
-												class="fa-solid fa-manat-sign"></i></span></h6>
+									<h6>
+										{% if home_product.discounted_price %}
+										{{ home_product.discounted_price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+										<span class="less_price">{{ home_product.price }} <i style="font-size: 12px;" class="fa-solid fa-manat-sign"></i></span>
+										{% else %}
+											{{ home_product.price }} <i style="font-size: 14px;" class="fa-solid fa-manat-sign"></i>
+										{% endif %}
+									</h6>
 								</div>
 							</div>
 							<div class="woo_product_cart hover">
 								<ul>
-									<li><a href="product-details.html" class="woo_cart_btn btn_cart"><i
+									<li><a href="{% url "product_detail_view" home_product.slug %}" class="woo_cart_btn btn_cart"><i
 												class="ti-eye"></i></a></li>
-
 								</ul>
 							</div>
 						</div>
 					</div>
+					{% endfor %}
+
 				</div>
 			</div>
 		</div>
@@ -1242,10 +850,10 @@
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="sec-heading-flex pl-2 pr-2">
 					<div class="sec-heading-flex-one">
-						<h2>Sonuncu Bloqlar</h2>
+						<h2>{% trans "Sonuncu Bloqlar" %}</h2>
 					</div>
 					<div class="sec-heading-flex-last">
-						<a href="#" class="btn btn-theme">Daha çox bax<i class="ti-arrow-right ml-2"></i></a>
+						<a href="{% url "blog_list_view" %}" class="btn btn-theme">{% trans "Daha çox bax" %}<i class="ti-arrow-right ml-2"></i></a>
 					</div>
 				</div>
 			</div>
@@ -1258,139 +866,32 @@
 					<div class="col-lg-12 col-md-12">
 						<div class="owl-carousel banner-offers owl-theme">
 
-							<!-- Single Item -->
-
-
-							<div class="col-lg-12 col-md-12 ">
-
-								<article class="post-grid-layout">
-									<a href="blog-detail.html">
-										<div class="post-article-header">
-											<img src="{% static "assets/img/2_b06c86af-977d-4e56-9eb8-6e84a21b7f47_470x.webp" %}"
-												class="img-fluid mx-auto" alt="">
-										</div>
-									</a>
-									<div class="post-article box-inner">
-										<div class="post-grid-caption-header">
-											<span class="post-article-cat theme-bg">Ədviyyatlar</span>
-											<h4 class="entry-title"><a href="blog-detail.html">Get Free Your
-													First
-													Delivery</a></h4>
-											<div class="post-short-des">
-												simply dummy text of the printing and typesetting industry.
-											</div>
-										</div>
-									</div>
-									<div class="post-article-footer">
-										<span><i class="ti-calendar mr-1"></i>17.12.2023</span>
-									</div>
-								</article>
-							</div>
-
+							{% for blog in latest_blogs %}
 							<!-- Single Item -->
 							<div class="col-lg-12 col-md-12 ">
 								<article class="post-grid-layout">
 									<a href="blog-detail.html">
 										<div class="post-article-header">
-											<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
+											<img src="{{ blog.cover_image.url }}"
 												class="img-fluid mx-auto" alt="">
 										</div>
 									</a>
 									<div class="post-article box-inner">
 										<div class="post-grid-caption-header">
-											<span class="post-article-cat theme-bg">Şirin olanlar</span>
-											<h4 class="entry-title"><a href="blog-detail.html">Get Free Your
-													First
-													Delivery</a></h4>
+											<span class="post-article-cat theme-bg">{{ blog.category.title }}</span>
+											<h4 class="entry-title"><a href="{% url "blog_detail_view" slug=blog.slug %}">{{ blog.title }}</a></h4>
 											<div class="post-short-des">
-												simply dummy text of the printing and typesetting industry.
+												<p>{{ blog.short_description }}</p>
 											</div>
 										</div>
 									</div>
 									<div class="post-article-footer">
-
-										<span><i class="ti-calendar mr-1"></i>17.12.2023</span>
+										<span><i class="ti-calendar mr-1"></i>{{ blog.created_at|date:"d.m.Y" }}</span>
 									</div>
 								</article>
 							</div>
+							{% endfor %}
 
-							<!-- Single Item -->
-							<div class="col-lg-12 col-md-12 ">
-								<article class="post-grid-layout">
-									<a href="blog-detail.html">
-										<div class="post-article-header">
-											<img src="{% static "assets/img/4_f7876c53-7f18-4ed6-bd52-811252e606fe_470x.webp" %}"
-												class="img-fluid mx-auto" alt="">
-										</div>
-									</a>
-									<div class="post-article box-inner">
-										<div class="post-grid-caption-header">
-											<span class="post-article-cat theme-bg">Çərəzlər</span>
-											<h4 class="entry-title"><a href="blog-detail.html">Get Free Your
-													First
-													Delivery</a></h4>
-											<div class="post-short-des">
-												simply dummy text of the printing and typesetting industry.
-											</div>
-										</div>
-									</div>
-									<div class="post-article-footer">
-
-										<span><i class="ti-calendar mr-1"></i>17.12.2023</span>
-									</div>
-								</article>
-							</div>
-							<!-- Single Item -->
-							<div class="col-lg-12 col-md-12 ">
-								<article class="post-grid-layout">
-									<a href="blog-detail.html">
-										<div class="post-article-header">
-											<img src="{% static "assets/img/3_f478f2fb-3156-4bfe-bd47-481177f4ef9c_470x.webp" %}"
-												class="img-fluid mx-auto" alt="">
-										</div>
-									</a>
-									<div class="post-article box-inner">
-										<div class="post-grid-caption-header">
-											<span class="post-article-cat theme-bg">Quru meyvələr</span>
-											<h4 class="entry-title"><a href="blog-detail.html">Get Free Your
-													First
-													Delivery</a></h4>
-											<div class="post-short-des">
-												simply dummy text of the printing and typesetting industry.
-											</div>
-										</div>
-									</div>
-									<div class="post-article-footer">
-
-										<span><i class="ti-calendar mr-1"></i>17.12.2023</span>
-									</div>
-								</article>
-							</div><!-- Single Item -->
-							<div class="col-lg-12 col-md-12 ">
-								<article class="post-grid-layout">
-									<a href="blog-detail.html">
-										<div class="post-article-header">
-											<img src="{% static "assets/img/2_b06c86af-977d-4e56-9eb8-6e84a21b7f47_470x.webp" %}"
-												class="img-fluid mx-auto" alt="">
-										</div>
-									</a>
-									<div class="post-article box-inner">
-										<div class="post-grid-caption-header">
-											<span class="post-article-cat theme-bg">Toxumlular</span>
-											<h4 class="entry-title"><a href="blog-detail.html">Get Free Your
-													First
-													Delivery</a></h4>
-											<div class="post-short-des">
-												simply dummy text of the printing and typesetting industry.
-											</div>
-										</div>
-									</div>
-									<div class="post-article-footer">
-
-										<span><i class="ti-calendar mr-1"></i>17.12.2023</span>
-									</div>
-								</article>
-							</div>
 						</div>
 					</div>
 				</div>

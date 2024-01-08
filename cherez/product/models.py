@@ -23,12 +23,22 @@ class ProductCategory(TimeStampedModel):
         verbose_name=_("Başlıq"),
         max_length=255
     )
+    image = models.ImageField(
+        verbose_name=_("Şəkil"),
+        upload_to="product_categories",
+        null=True,
+        blank=True
+    )
     show_in_navbar = models.BooleanField(
         verbose_name=_("Navbarda göstər"),
         default=False
     )
     show_in_footer = models.BooleanField(
         verbose_name=_("Footerda göstər"),
+        default=False
+    )
+    show_in_home = models.BooleanField(
+        verbose_name=_("Ana səhifədə göstər"),
         default=False
     )
     slug = models.SlugField(
@@ -46,6 +56,11 @@ class ProductCategory(TimeStampedModel):
                 )
             except ValueError as e:
                 raise ValidationError(str(e))
+            
+        if self.show_in_home and not self.image:
+            raise ValidationError({
+                "image": _("'Ana səhifədə göstər' seçilmişsə, şəkil seçilməlidir.")
+            })
             
         if self.parent:
             if self.show_in_navbar:
@@ -131,6 +146,10 @@ class Product(TimeStampedModel):
     )
     is_new = models.BooleanField(
         verbose_name=_("Yeni"),
+        default=False
+    )
+    show_in_home = models.BooleanField(
+        verbose_name=_("Ana səhifədə göstər"),
         default=False
     )
     is_active = models.BooleanField(
