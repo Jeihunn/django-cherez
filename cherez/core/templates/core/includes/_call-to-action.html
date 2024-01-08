@@ -1,17 +1,19 @@
+{% load i18n %}
+
 <section class="theme-bg call_action_wrap-wrap">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="call_action_wrap">
                     <div class="call_action_wrap-head">
-                        <h3>Do You Have Questions ?</h3>
-                        <span>We'll help you to grow your career and growth.</span>
+                        <h3>{% trans "Suallarınız var ?" %}</h3>
+                        <span>{% trans "Karyeranızı və böyümənizi artırmağınıza kömək edəcəyik." %}</span>
                     </div>
                     <div class="newsletter_box" id="subscribe-form-div">
                         <form id="subscribeForm" action="" method="post">
                             {% csrf_token %}
                             <div class="input-group">
-                                <input type="text" class="form-control" id="emailInput" placeholder="Burada Abunə Olun...">
+                                <input type="text" class="form-control" id="emailInput" placeholder="{% trans "Burada Abunə Olun..." %}">
                                 <div class="input-group-append">
                                     <button class="btn search_btn" type="submit"><i
                                             class="fas fa-arrow-alt-circle-right"></i></button>

@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block content %}
@@ -10,12 +11,12 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="text-center">
-					<h2 class="breadcrumbs_title">News & Articles</h2>
+					<h2 class="breadcrumbs_title">{% trans "Xəbərlər & Məqalələr" %}</h2>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
 							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Shop</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Blogs</li>
+							<li class="breadcrumb-item"><a href="#">{% trans "Mağaza" %}</a></li>
+							<li class="breadcrumb-item active" aria-current="page">{% trans "Bloqlar" %}</li>
 						</ol>
 					</nav>
 				</div>
@@ -40,7 +41,7 @@
 
 		{% if blog_posts.has_other_pages %}
 		<div class="col-md-12 col-md-12 text-center">
-			<a class="btn btn-theme rounded more-btn" id="load-more-btn">Daha çox</a>
+			<a class="btn btn-theme rounded more-btn" id="load-more-btn">{% trans "Daha çox" %}</a>
 		</div>
 		{% endif %}
 

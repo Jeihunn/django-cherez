@@ -75,12 +75,12 @@
                         <div class="nav-menus-wrapper" style="transition-property: none;">
                             <ul class="nav-menu">
                                 <li {% if request.resolver_match.url_name == 'index_view' %}class="active"{% endif %}>
-                                    <a href="{% url "index_view" %}">Ana Səhifə</a>
+                                    <a href="{% url "index_view" %}">{% trans "Ana Səhifə" %}</a>
                                 </li>
                                 <li {% if request.resolver_match.url_name == 'about_us_view' %}class="active"{% endif %}>
-                                    <a href="{% url "about_us_view" %}">Haqqımızda<span class="submenu-indicator"></span></a>
+                                    <a href="{% url "about_us_view" %}">{% trans "Haqqımızda" %}<span class="submenu-indicator"></span></a>
                                 </li>
-                                <li><a href="{% url "product_list_view" %}">Məhsullar<span class="submenu-indicator"></span></a>
+                                <li><a href="{% url "product_list_view" %}">{% trans "Məhsullar" %}<span class="submenu-indicator"></span></a>
                                     {% get_parent_null_categories as parent_null_categories %}
                                     <ul class="nav-dropdown nav-submenu">
                                         {% for category in parent_null_categories %}
@@ -95,7 +95,7 @@
                                     </ul>
                                 </li>
 
-                                <li {% if request.resolver_match.url_name == 'blog_list_view' %}class="active"{% endif %}><a href="{% url "blog_list_view" %}">Bloq<span class="submenu-indicator"></span></a>
+                                <li {% if request.resolver_match.url_name == 'blog_list_view' %}class="active"{% endif %}><a href="{% url "blog_list_view" %}">{% trans "Bloq" %}<span class="submenu-indicator"></span></a>
                                     <!--<ul class="nav-dropdown nav-submenu">
                                             <li><a href="#">User Dashboard<span class="submenu-indicator"></span></a>
                                                 <ul class="nav-dropdown nav-submenu">
@@ -115,7 +115,7 @@
                                 </li>
 
                                 <li {% if request.resolver_match.url_name == 'contact_us_view' %}class="active"{% endif %}>
-                                    <a href="{% url "contact_us_view" %}">Bizimlə Əlaqə
+                                    <a href="{% url "contact_us_view" %}">{% trans "Bizimlə Əlaqə" %}
                                         <span class="submenu-indicator"></span>
                                     </a>
                                 </li>
@@ -135,7 +135,7 @@
                         <div class="blocks search_blocks">
                             <form action="{% url "product_list_view" %}">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="query" placeholder="Məhsul axtarın...">
+                                    <input type="text" class="form-control" name="query" placeholder="{% trans "Məhsul axtarın..." %}">
                                     <div class="input-group-append">
                                         <button class="btn search_btn" type="submit"><i
                                                 class="ti-search"></i></button>

@@ -1,5 +1,6 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 
 {% block content %}
@@ -10,12 +11,12 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="text-center">
-					<h2 class="breadcrumbs_title">Single Blog Post Article Style</h2>
+					<h2 class="breadcrumbs_title">{% trans "Bloq Yazısı" %}</h2>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Blog</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Single Blog</li>
+							<li class="breadcrumb-item"><a href="{% url "index_view" %}"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="{% url "blog_list_view" %}">{% trans "Bloq" %}</a></li>
+							<li class="breadcrumb-item active" aria-current="page">{{ blog_post.title }}</li>
 						</ol>
 					</nav>
 				</div>
@@ -83,14 +84,14 @@
 
 					<div class="side-widget">
 						<div class="side-widget-header border-0">
-							<h4><i class="ti-search"></i>Burada Axtarın</h4>
+							<h4><i class="ti-search"></i>{% trans "Burada Axtarın" %}</h4>
 						</div>
 						<div class="side-widget-body p-t-10">
 							<form action="{% url "blog_list_view" %}">
 								<div class="input-group">
-									<input type="text" class="form-control" name="query" placeholder="Axtarın…">
+									<input type="text" class="form-control" name="query" placeholder="{% trans "Axtarın…" %}">
 									<span class="input-group-btn">
-										<button type="submit" class="btn btn-primary btn-lg">Axtar</button>
+										<button type="submit" class="btn btn-primary btn-lg">{% trans "Axtar" %}</button>
 									</span>
 								</div>
 							</form>
@@ -99,7 +100,7 @@
 
 					<div class="side-widget">
 						<div class="side-widget-header">
-							<h4><i class="ti-check-box"></i>Latest Blogs</h4>
+							<h4><i class="ti-check-box"></i>{% trans "Ən Son Bloqlar" %}</h4>
 						</div>
 						<div class="side-widget-body p-t-10">
 							<div class="side-list">
@@ -128,7 +129,7 @@
 
 					<div class="side-widget">
 						<div class="side-widget-header">
-							<h4><i class="ti-briefcase"></i>Bütün Kateqorilər</h4>
+							<h4><i class="ti-briefcase"></i>{% trans "Bütün Kateqoriyalar" %}</h4>
 						</div>
 						<div class="side-widget-body p-t-10 p-b-0">
 							<div class="side-list">

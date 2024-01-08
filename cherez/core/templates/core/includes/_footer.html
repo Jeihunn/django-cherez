@@ -1,5 +1,6 @@
 {% load static %}
 {% load tags %}
+{% load i18n %}
 
 {% get_site_info as site_info %}
 <footer class="dark-footer skin-dark-footer style-2">
@@ -62,7 +63,7 @@
                 </div>
                 <div class="col-lg-4 col-md-2 footer_middle">
                     <div class="footer_widget">
-                        <h4 class="widget_title">Categories</h4>
+                        <h4 class="widget_title">{% trans "Kateqoriyalar" %}</h4>
                         {% get_parent_null_categories as parent_null_categories %}
                         <ul class="footer-menu">
                             {% for category in parent_null_categories %}
@@ -80,7 +81,7 @@
 
                 <div class="col-lg-4 col-md-4">
                     <div class="footer_widget">
-                        <h4 class="extream">Contact us</h4>
+                        <h4 class="extream">{% trans "Bizimlə Əlaqə" %}</h4>
 
                         <div class="address_infos">
                             <ul>

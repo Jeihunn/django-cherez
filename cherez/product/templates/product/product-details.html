@@ -1,6 +1,7 @@
 {% extends "core/base.html" %}
 {% load static %}
 {% load tags %}
+{% load i18n %}
 
 
 {% block content %}
@@ -12,12 +13,12 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12 col-12">
 				<div class="text-center">
-					<h2 class="breadcrumbs_title">Nuetrick Pineapple</h2>
+					<h2 class="breadcrumbs_title">{% trans "Məhsul" %}</h2>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#">Men</a></li>
-							<li class="breadcrumb-item"><a href="#">Fresh Fruits</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Pineapple</li>
+							<li class="breadcrumb-item"><a href="{% url "index_view" %}"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item"><a href="{% url "product_list_view" %}">{% trans "Məhsullar" %}</a></li>
+							<li class="breadcrumb-item active" aria-current="page">{{ product.title }}</li>
 						</ol>
 					</nav>
 				</div>
@@ -65,7 +66,7 @@
 					<div class="woo_cats_wrps">
 						<a href="#" class="woo_pr_cats">{{ product.category.title }}</a>
 						{% if product.is_new %}
-						<span class="woo_pr_trending">Yeni</span>
+						<span class="woo_pr_trending">{% trans "Yeni" %}</span>
 						{% endif %}
 					</div>
 					<h2 class="woo_pr_title">{{ product.title }}</h2>
@@ -104,7 +105,7 @@
 						<div class="single_search_boxed">
 							<div class="widget-boxed-header">
 								<h4><a href="#pricing" data-toggle="collapse" aria-expanded="false"
-										role="button">Çəki: {{ product.weight }} kg</a></h4>
+										role="button">{% trans "Çəki" %}: {{ product.weight }} kg</a></h4>
 							</div>
 						</div>
 					</div>
@@ -113,7 +114,7 @@
 					<div class="no-mrg">
 						<div class="wp-area">
 							{% get_site_info as site_info %}
-							<a href="https://api.whatsapp.com/send?phone={{ site_info.whatsapp }}&text={% if product.product_code %}Məhsul kodu: {{ product.product_code }} | {% endif %}Məhsul adı: {{ product.title }} | Qiymət: {% if product.discounted_price %}{{ product.discounted_price }}{% else %}{{ product.price }}{% endif %}" class="fa-brands fa-whatsapp wp" target="_blank">Whatsappla əlaqə</a>
+							<a href="https://api.whatsapp.com/send?phone={{ site_info.whatsapp }}&text={% if product.product_code %}{% trans "Məhsul kodu" %}: {{ product.product_code }} | {% endif %}{% trans "Məhsul adı" %}: {{ product.title }} | {% trans "Qiymət" %}: {% if product.discounted_price %}{{ product.discounted_price }}{% else %}{{ product.price }}{% endif %}" class="fa-brands fa-whatsapp wp" target="_blank">{% trans "Whatsappla əlaqə" %}</a>
 						</div>
 
 					</div>
@@ -130,7 +131,7 @@
 						<li class="nav-item">
 							<a class="nav-link active" id="description-tab" data-toggle="tab"
 								href="#description" role="tab" aria-controls="description" aria-selected="true"
-								aria-expanded="true">Məhsulun təsviri</a>
+								aria-expanded="true">{% trans "Məhsulun təsviri" %}</a>
 						</li>
 					</ul>
 					<div class="tab-content" id="myTabContent">
@@ -151,7 +152,7 @@
 
 		<div class="row">
 			<div class="col-lg-12 col-md-12 mb-2">
-				<h4>Oxşar Məhsullar</h4>
+				<h4>{% trans "Oxşar Məhsullar" %}</h4>
 			</div>
 		</div>
 
@@ -165,10 +166,10 @@
 					<div class="item">
 						<div class="woo_product_grid">
 							{% if similar_product.is_new %}
-							<span class="woo_pr_tag new">Yeni</span>
+							<span class="woo_pr_tag new">{% trans "Yeni" %}</span>
 							{% endif %}
 							{% if similar_product.discounted_price %}
-							<span class="woo_offer_sell">{{ similar_product.discount.percent }}% Endirim</span>
+							<span class="woo_offer_sell">{{ similar_product.discount.percent }}% {% trans "Endirim" %}</span>
 							{% endif %}
 							<div class="woo_product_thumb">
 								<img src="{{ similar_product.cover_image.url }}"

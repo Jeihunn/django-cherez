@@ -1,5 +1,6 @@
 {% extends "core/base.html" %}
 {% load static %}
+{% load i18n %}
 
 
 {% block content %}
@@ -10,12 +11,11 @@
 
 			<div class="col-lg-12 col-md-12 col-sm-12">
 				<div class="text-center">
-					<h2 class="breadcrumbs_title">Biz Kimik?</h2>
+					<h2 class="breadcrumbs_title">{% trans "Biz Kimik?" %}</h2>
 					<nav aria-label="breadcrumb">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="#"><i class="ti-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Shop</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Haqqımızda</li>
+							<li class="breadcrumb-item"><a href="{% url "index_view" %}"><i class="ti-home"></i></a></li>
+							<li class="breadcrumb-item active" aria-current="page">{% trans "Haqqımızda" %}</li>
 						</ol>
 					</nav>
 				</div>
@@ -40,7 +40,7 @@
 					numquam</p>
 				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
 					voluptatum.</p>
-				<a href="products.html" class="btn btn-theme mt-2">Məhsullar</a>
+				<a href="{% url "product_list_view" %}" class="btn btn-theme mt-2">{% trans "Məhsullar" %}</a>
 			</div>
 
 			<div class="col-lg-6 col-md-6 col-sm-12 ml-auto">
@@ -65,7 +65,7 @@
 			
 			{% for faq in faqs %}
 			<div class="faq-item">
-				<div class="faq-question" onclick="toggleAnswer('faq-answer-{{ forloop.counter }}')">Sual {{ forloop.counter }}:
+				<div class="faq-question" onclick="toggleAnswer('faq-answer-{{ forloop.counter }}')">{% trans "Sual" %} {{ forloop.counter }}:
 					<span>{{ faq.question }}</span>
 				</div>
 				<div class="faq-answer" id="faq-answer-{{ forloop.counter }}">

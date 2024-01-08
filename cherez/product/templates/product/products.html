@@ -1,6 +1,8 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% load tags %}
+{% load i18n %}
+
 
 {% block content %}
 <!-- =========================== Breadcrumbs =================================== -->
@@ -131,7 +133,7 @@
 								</div>
 							</div>
 						{% endfor %}
-						<button type="submit" class="w-100 btn btn-primary">Filtirlə</button>
+						<button type="submit" class="w-100 btn btn-primary">{% trans "Filtirlə" %}</button>
 					</form>
 
 					</div>
@@ -156,11 +158,11 @@
 								</label>
 								<div class="control">
 									<select id="limiter" data-role="limiter" class="limiter-options" onchange="changeOrdering(this.value)">
-										<option class="hidn" {% if current_ordering == '-created_at' %}selected{% endif %}>Önərilən sıralama</option>
-										<option value="title" {% if current_ordering == 'title' %}selected{% endif %}>Məhsulun adı A-Z</option>
-										<option value="-title" {% if current_ordering == '-title' %}selected{% endif %}>Məhsulun adı Z-A</option>
-										<option value="price" {% if current_ordering == 'price' %}selected{% endif %}>Qiymət (Ucuzdan Bahaya)</option>
-										<option value="-price" {% if current_ordering == '-price' %}selected{% endif %}>Qiymət (Bahadan Ucuza)</option>
+										<option class="hidn" {% if current_ordering == '-created_at' %}selected{% endif %}>{% trans "Önərilən sıralama" %}</option>
+										<option value="title" {% if current_ordering == 'title' %}selected{% endif %}>{% trans "Məhsulun adı A-Z" %}</option>
+										<option value="-title" {% if current_ordering == '-title' %}selected{% endif %}>{% trans "Məhsulun adı Z-A" %}</option>
+										<option value="price" {% if current_ordering == 'price' %}selected{% endif %}>{% trans "Qiymət (Ucuzdan Bahaya)" %}</option>
+										<option value="-price" {% if current_ordering == '-price' %}selected{% endif %}>{% trans "Qiymət (Bahadan Ucuza)" %}</option>
 									</select>
 								</div>
 							</div>
@@ -180,7 +182,7 @@
 							<span class="woo_pr_tag new">Yeni</span>
 							{% endif %}
 							{% if product.discounted_price %}
-							<span class="woo_offer_sell">{{ product.discount.percent }}% Endirim</span>
+							<span class="woo_offer_sell">{{ product.discount.percent }}% {% trans "Endirim" %}</span>
 							{% endif %}
 							<div class="woo_product_thumb">
 								<img style="aspect-ratio: 500/500;" src="{{ product.cover_image.url }}"
