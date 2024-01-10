@@ -177,22 +177,23 @@
 <div class="clearfix"></div>
 <!-- ======================== Fresh Vegetables End ==================== -->
 
+{% if home_banner %}
 <!-- =========================== Customer Reviews =================================== -->
-<section class="bg-cover video-area" style="background:#eff8e7 url({% static "assets/img/gro-trans.png" %}) no-repeat">
+<section class="bg-cover video-area" style="background:#eff8e7 url({{ home_banner.background_image.url }}) no-repeat">
 	<div class="container">
 
 		<div class="row justify-content-center">
 			<div class="col-lg-10 col-md-10 col-sm-12">
 				<div class="sec-heading">
 					<div class="sec-heading center">
-						<span class="theme-cl">In a free hour, when our power of choice mettal</span>
-						<h2 class="grocery_title">Loving Customers</h2>
+						<span class="theme-cl">{{ home_banner.description }}</span>
+						<h2 class="grocery_title">{{ home_banner.title }}</h2>
 						<a href="products.html">
 							<div class="col-lg-6 col-md-12 col-sm-12 ml-auto">
 								<div class="about_video avto">
 									<div class="thumb">
-										<img class="pro_img img-fluid w100" src="{% static "assets/img/offer-4.jpg" %}"
-											alt="7.jpg">
+										<img class="pro_img img-fluid w100" src="{{ home_banner.image.url }}"
+											alt="banner">
 									</div>
 								</div>
 							</div>
@@ -206,6 +207,7 @@
 	</div>
 </section>
 <!-- =========================== Customer Reviews =================================== -->
+{% endif %}
 
 <!-- ======================== Fresh & Fast Fruits Start ==================== -->
 

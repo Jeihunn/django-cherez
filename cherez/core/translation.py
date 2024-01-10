@@ -1,5 +1,5 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import FAQ, HomeAdvantage
+from .models import FAQ, HomeAdvantage, HomeBanner
 
 
 class FAQTranslationOptions(TranslationOptions):
@@ -10,5 +10,10 @@ class HomeAdvantageTranslationOptions(TranslationOptions):
     fields = ("title", "description")
 
 
-translator.register(HomeAdvantage, HomeAdvantageTranslationOptions)
+class HomeBannerTranslationOptions(TranslationOptions):
+    fields = ("title", "description")
+
+
 translator.register(FAQ, FAQTranslationOptions)
+translator.register(HomeAdvantage, HomeAdvantageTranslationOptions)
+translator.register(HomeBanner, HomeBannerTranslationOptions)

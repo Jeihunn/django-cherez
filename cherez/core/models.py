@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import ValidationError
 
 from ckeditor.fields import RichTextField
 
@@ -202,3 +203,39 @@ class HomeAdvantage(TimeStampedModel):
     class Meta:
         verbose_name = _("Avantaj")
         verbose_name_plural = _("Avantajlar")
+
+
+class HomeBanner(TimeStampedModel):
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=100
+    )
+    description = models.TextField(
+        verbose_name=_("Açıqlama"),
+    )
+    image = models.ImageField(
+        verbose_name=_("Şəkil"),
+        upload_to="home_banner/",
+    )
+    background_image = models.ImageField(
+        verbose_name=_("Arxa plan şəkli"),
+        upload_to="home_banner/",
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Ana səhifə banneri")
+        verbose_name_plural = _("Ana səhifə banneri")
+
+    def clean(self):
+        existing_count = HomeBanner.objects.exclude(id=self.id).count()
+
+        if existing_count > 0:
+            raise ValidationError(
+                "Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner yaradılıb.")
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)

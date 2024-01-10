@@ -17,6 +17,7 @@ from .forms import ContactForm, SubscriberForm
 from .models import (
     FAQ,
     HomeAdvantage,
+    HomeBanner
 )
 
 
@@ -30,12 +31,14 @@ def index_view(request):
     latest_blogs = BlogPost.objects.filter(is_active=True).order_by("-created_at")[:7]
 
     advertages = HomeAdvantage.objects.filter(is_active=True).order_by("-created_at")
+    home_banner = HomeBanner.objects.first()
 
     context = {
         "home_product_categories": home_product_categories,
         "home_products": home_products,
         "latest_blogs": latest_blogs,
-        "advertages": advertages
+        "advertages": advertages,
+        "home_banner": home_banner
     }
     return render(request, "core/index.html", context)
 
