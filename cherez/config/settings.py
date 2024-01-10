@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-x%rbwx=n@u%m4aoyd2w14*z7t1q)py%yl%#gflecopme_606@0'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY", "django-insecure-218z(wi3+a5!^q6#jn++7rp*_r_97onxh(w9pid-xf)o96qns-")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ["*"]
+DEBUG = int(os.environ.get("DEBUG", default=1))
+PROD = int(os.environ.get("PROD", default=0))
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
 
 
 # Application definition
@@ -50,6 +51,7 @@ THIRD_PARTY_APPS = [
     "ckeditor",
     "widget_tweaks",
     "rosetta",
+    "corsheaders",
 ]
 
 MY_APPS = [
@@ -98,10 +100,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# # SQLite
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# PostgreSQL
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get("POSTGRES_DB", 'db_name'),
+        'USER': os.environ.get("POSTGRES_USER", 'postgres'),
+        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", 12345),
+        # 'localhost' or droplet_ip
+        'HOST': os.environ.get("POSTGRES_HOST", 'localhost'),
+        'PORT': 5432,
     }
 }
 
@@ -158,10 +174,12 @@ MODELTRANSLATION_LANGUAGES = ('az', 'en', 'ru')
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-]
-
+if PROD:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static")
+    ]
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
@@ -181,3 +199,18 @@ CKEDITOR_CONFIGS = {
         # 'width': '100%',
     },
 }
+
+
+# CORS Headers config
+if PROD:
+    CORS_ALLOW_ALL_ORIGINS: False
+    CORS_ALLOWED_ORIGINS = os.environ.get(
+        'CORS_ALLOWED_ORIGINS', 'http://*,https://*').split(',')
+else:
+    CORS_ALLOW_ALL_ORIGINS: True
+
+
+# CSRF TRUSTED ORIGINS config
+if PROD:
+    CSRF_TRUSTED_ORIGINS = os.environ.get(
+        'CSRF_TRUSTED_ORIGINS', 'http://*,https://*').split(',')

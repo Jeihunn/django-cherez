@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-01-08 11:48+0400\n"
+"POT-Creation-Date: 2024-01-10 12:43+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,26 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\blog\models.py:16 .\blog\models.py:57 .\product\models.py:23
-#: .\product\models.py:82 .\product\models.py:204 .\product\models.py:236
+#: .\blog\models.py:16 .\blog\models.py:57 .\core\models.py:189
+#: .\core\models.py:210 .\core\models.py:250 .\core\models.py:286
+#: .\product\models.py:23 .\product\models.py:109 .\product\models.py:235
+#: .\product\models.py:267
 msgid "Başlıq"
 msgstr ""
 
-#: .\blog\models.py:20 .\blog\models.py:84 .\core\models.py:24
-#: .\product\models.py:137 .\product\models.py:190 .\product\models.py:214
+#: .\blog\models.py:20 .\blog\models.py:84 .\core\models.py:25
+#: .\core\models.py:196 .\core\models.py:272 .\product\models.py:168
+#: .\product\models.py:221 .\product\models.py:245
 msgid "Aktiv"
 msgstr ""
 
-#: .\blog\models.py:24 .\blog\models.py:88 .\product\models.py:35
-#: .\product\models.py:141 .\product\models.py:240
+#: .\blog\models.py:24 .\blog\models.py:88 .\product\models.py:45
+#: .\product\models.py:172 .\product\models.py:271
 msgid "Slug"
 msgstr ""
 
-#: .\blog\models.py:34 .\blog\models.py:98 .\product\models.py:45
-#: .\product\models.py:151 .\product\models.py:250
+#: .\blog\models.py:34 .\blog\models.py:98 .\product\models.py:55
+#: .\product\models.py:182 .\product\models.py:281
 msgid "Slug dəyəri boş ola bilməz. Başlığı düzəldin."
 msgstr ""
 
@@ -58,7 +61,7 @@ msgstr ""
 msgid "Məzmun"
 msgstr ""
 
-#: .\blog\models.py:74 .\product\models.py:129
+#: .\blog\models.py:74 .\product\models.py:156
 msgid "Cover şəkili"
 msgstr ""
 
@@ -66,20 +69,45 @@ msgstr ""
 msgid "Məzmun şəkili"
 msgstr ""
 
-#: .\blog\models.py:114
+#: .\blog\models.py:114 .\blog\templates\blog\blog-detail.html:18
+#: .\core\templates\core\includes\_header.html:98
 msgid "Bloq"
 msgstr ""
 
-#: .\blog\models.py:115 .\blog\templates\blog\blog.html:19
+#: .\blog\models.py:115 .\blog\templates\blog\blog.html:18
 msgid "Bloqlar"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:14
+msgid "Bloq Yazısı"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:87
+msgid "Burada Axtarın"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:92
+msgid "Axtarın…"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:94
+msgid "Axtar"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:103
+msgid "Ən Son Bloqlar"
+msgstr ""
+
+#: .\blog\templates\blog\blog-detail.html:132
+msgid "Bütün Kateqoriyalar"
 msgstr ""
 
 #: .\blog\templates\blog\blog.html:14
 msgid "Xəbərlər & Məqalələr"
 msgstr "News & Articles"
 
-#: .\blog\templates\blog\blog.html:18
-msgid "Mağaza"
+#: .\blog\templates\blog\blog.html:43
+msgid "Daha çox"
 msgstr ""
 
 #: .\blog\views.py:39 .\blog\views.py:41 .\product\views.py:55
@@ -99,131 +127,307 @@ msgstr ""
 msgid "Russian"
 msgstr ""
 
-#: .\core\admin.py:22
+#: .\core\admin.py:26
 msgid "Sosial mediya"
 msgstr ""
 
-#: .\core\admin.py:23
+#: .\core\admin.py:27
 msgid "Sosial mediyalar"
 msgstr ""
 
-#: .\core\models.py:15
+#: .\core\models.py:16 .\core\templates\core\about-us.html:63
 msgid "Sual"
 msgstr ""
 
-#: .\core\models.py:18
+#: .\core\models.py:19
 msgid "Cavab"
 msgstr ""
 
-#: .\core\models.py:21
+#: .\core\models.py:22
 msgid "Göstərilmə sırası"
 msgstr ""
 
-#: .\core\models.py:36
+#: .\core\models.py:37
 msgid "Tez-tez verilən sual"
 msgstr ""
 
-#: .\core\models.py:37
+#: .\core\models.py:38
 msgid "Tez-tez verilən suallar"
 msgstr ""
 
-#: .\core\models.py:42 .\core\models.py:86
+#: .\core\models.py:43 .\core\models.py:87
 msgid "Ad"
 msgstr ""
 
-#: .\core\models.py:46 .\core\models.py:67
+#: .\core\models.py:47 .\core\models.py:68
 msgid "E-poçt"
 msgstr ""
 
-#: .\core\models.py:50
+#: .\core\models.py:51
 msgid "Telefon nömrəsi"
 msgstr ""
 
-#: .\core\models.py:54
+#: .\core\models.py:55
 msgid "Mesaj"
 msgstr ""
 
-#: .\core\models.py:61
+#: .\core\models.py:62 .\core\templates\core\contact-us.html:21
 msgid "Əlaqə"
 msgstr ""
 
-#: .\core\models.py:62
+#: .\core\models.py:63
 msgid "Əlaqələr"
 msgstr ""
 
-#: .\core\models.py:72
+#: .\core\models.py:73
 msgid "Abunə statusu"
 msgstr ""
 
-#: .\core\models.py:80
+#: .\core\models.py:81
 msgid "Abunə"
 msgstr ""
 
-#: .\core\models.py:81
+#: .\core\models.py:82
 msgid "Abunələr"
 msgstr ""
 
-#: .\core\models.py:90
-msgid "Logo"
+#: .\core\models.py:91
+msgid "Header Logo"
 msgstr ""
 
-#: .\core\models.py:94
-msgid "Favicon"
+#: .\core\models.py:95
+msgid "Footer Logo"
 msgstr ""
 
-#: .\core\models.py:98
-msgid "E-poçt 1"
+#: .\core\models.py:99
+msgid "Footer Slogan"
 msgstr ""
 
 #: .\core\models.py:104
+msgid "Favicon"
+msgstr ""
+
+#: .\core\models.py:108
+msgid "E-poçt 1"
+msgstr ""
+
+#: .\core\models.py:114
 msgid "E-poçt 2"
 msgstr ""
 
-#: .\core\models.py:110
+#: .\core\models.py:120
 msgid "Telefon nömrəsi 1"
 msgstr ""
 
-#: .\core\models.py:116
+#: .\core\models.py:126
 msgid "Telefon nömrəsi 2"
 msgstr ""
 
-#: .\core\models.py:122
+#: .\core\models.py:132
 msgid "Whatsapp"
 msgstr ""
 
-#: .\core\models.py:128
+#: .\core\models.py:138
 msgid "Ünvan"
 msgstr ""
 
-#: .\core\models.py:134
+#: .\core\models.py:144
 msgid "Xəritə"
 msgstr ""
 
-#: .\core\models.py:143 .\core\models.py:152
+#: .\core\models.py:153 .\core\models.py:162
 msgid "Sayt məlumatı"
 msgstr ""
 
-#: .\core\models.py:144
+#: .\core\models.py:154
 msgid "Sayt məlumatları"
 msgstr ""
 
-#: .\core\models.py:155
+#: .\core\models.py:165
 msgid "Platform"
 msgstr ""
 
-#: .\core\models.py:167
+#: .\core\models.py:177
 msgid "URL"
 msgstr ""
 
-#: .\core\views.py:39
+#: .\core\models.py:184
+msgid "Ikon class"
+msgstr ""
+
+#: .\core\models.py:186
+msgid "Məs: \"ti-headphone-alt\" | class=\"CLASS_NAME\""
+msgstr ""
+
+#: .\core\models.py:193 .\core\models.py:214 .\core\models.py:254
+#: .\core\models.py:290
+msgid "Açıqlama"
+msgstr ""
+
+#: .\core\models.py:204
+msgid "Avantaj"
+msgstr ""
+
+#: .\core\models.py:205
+msgid "Avantajlar"
+msgstr ""
+
+#: .\core\models.py:217 .\core\models.py:257 .\core\models.py:293
+msgid "Şəkil"
+msgstr ""
+
+#: .\core\models.py:221
+msgid "Arxa plan şəkli"
+msgstr ""
+
+#: .\core\models.py:225
+msgid "Link"
+msgstr ""
+
+#: .\core\models.py:234 .\core\models.py:235
+msgid "Ana səhifə banneri"
+msgstr ""
+
+#: .\core\models.py:241
+msgid ""
+"Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner mövcuddur."
+msgstr ""
+
+#: .\core\models.py:261
+msgid "Button mətni"
+msgstr ""
+
+#: .\core\models.py:267
+msgid "Button linki"
+msgstr ""
+
+#: .\core\models.py:280
+msgid "Ana səhifə slayderi"
+msgstr ""
+
+#: .\core\models.py:281
+msgid "Ana səhifə slayderləri"
+msgstr ""
+
+#: .\core\models.py:301 .\core\models.py:302
+#: .\core\templates\core\about-us.html:18
+#: .\core\templates\core\includes\_header.html:81
+msgid "Haqqımızda"
+msgstr ""
+
+#: .\core\models.py:308
+msgid "Yalnız bir Haqqımızda məlumatı olmalıdır. Artıq 1 ədəd mövcuddur."
+msgstr ""
+
+#: .\core\templates\core\about-us.html:14
+msgid "Biz Kimik?"
+msgstr ""
+
+#: .\core\templates\core\about-us.html:39
+#: .\core\templates\core\includes\_header.html:83 .\product\models.py:206
+#: .\product\templates\product\product-details.html:20
+#: .\product\templates\product\products.html:15
+#: .\product\templates\product\products.html:19
+msgid "Məhsullar"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:17
+msgid "Əlaqə Qurmaq"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:41
+msgid "ÜNVAN"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:51
+msgid "E-POÇT"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:65
+msgid "TELEFON"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:88
+msgid "Adınız"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:94
+msgid "Email"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:101
+msgid "Telefon"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:107
+msgid "Mesajınız"
+msgstr ""
+
+#: .\core\templates\core\contact-us.html:113
+msgid "Göndər"
+msgstr ""
+
+#: .\core\templates\core\includes\_call-to-action.html:9
+msgid "Suallarınız var ?"
+msgstr ""
+
+#: .\core\templates\core\includes\_call-to-action.html:10
+msgid "Karyeranızı və böyümənizi artırmağınıza kömək edəcəyik."
+msgstr ""
+
+#: .\core\templates\core\includes\_call-to-action.html:16
+msgid "Burada Abunə Olun..."
+msgstr ""
+
+#: .\core\templates\core\includes\_footer.html:40
+msgid "Kateqoriyalar"
+msgstr ""
+
+#: .\core\templates\core\includes\_footer.html:58
+#: .\core\templates\core\includes\_header.html:118
+msgid "Bizimlə Əlaqə"
+msgstr ""
+
+#: .\core\templates\core\includes\_header.html:78
+msgid "Ana Səhifə"
+msgstr ""
+
+#: .\core\templates\core\includes\_header.html:138
+msgid "Məhsul axtarın..."
+msgstr ""
+
+#: .\core\templates\core\index.html:100
+msgid "Evinizdə Təzə Meyvələr"
+msgstr ""
+
+#: .\core\templates\core\index.html:101
+msgid "Online Mağaza"
+msgstr ""
+
+#: .\core\templates\core\index.html:119 .\core\templates\core\index.html:236
+#: .\product\models.py:136 .\product\models.py:250
+#: .\product\templates\product\product-details.html:172
+#: .\product\templates\product\products.html:184
+msgid "Endirim"
+msgstr ""
+
+#: .\core\templates\core\index.html:218 .\core\templates\core\index.html:299
+msgid "Daha çox bax"
+msgstr ""
+
+#: .\core\templates\core\index.html:296
+msgid "Sonuncu Bloqlar"
+msgstr ""
+
+#: .\core\views.py:66
 msgid "Mesaj uğurla göndərildi."
 msgstr ""
 
-#: .\core\views.py:60
+#: .\core\views.py:87
 msgid "Etibarsız sorğu!"
 msgstr ""
 
-#: .\product\admin.py:22 .\product\models.py:186
+#: .\product\admin.py:22 .\product\models.py:27 .\product\models.py:217
 msgid "Şəkil"
 msgstr ""
 
@@ -235,96 +439,142 @@ msgstr ""
 msgid "Üst Kategoriyası"
 msgstr ""
 
-#: .\product\models.py:27
+#: .\product\models.py:33
 msgid "Navbarda göstər"
 msgstr ""
 
-#: .\product\models.py:31
+#: .\product\models.py:37
 msgid "Footerda göstər"
 msgstr ""
 
-#: .\product\models.py:53
+#: .\product\models.py:41 .\product\models.py:164
+msgid "Ana səhifədə göstər"
+msgstr ""
+
+#: .\product\models.py:62
+msgid "'Ana səhifədə göstər' seçilmişsə, şəkil seçilməlidir."
+msgstr ""
+
+#: .\product\models.py:68
 msgid ""
 "Üst kategoriyaya sahib olan bir kategoriya üçün 'Navbarda göstər' seçimi "
 "Doğru ola bilməz."
 msgstr ""
 
-#: .\product\models.py:57
+#: .\product\models.py:72
 msgid ""
 "Üst kategoriyaya sahib olan bir kategoriya üçün 'Footerda göstər' seçimi "
 "Doğru ola bilməz."
 msgstr ""
 
-#: .\product\models.py:76 .\product\models.py:96
+#: .\product\models.py:103 .\product\models.py:123
 msgid "Məhsul Kategoriyası"
 msgstr ""
 
-#: .\product\models.py:77
+#: .\product\models.py:104
 msgid "Məhsul Kategoriyaları"
 msgstr ""
 
-#: .\product\models.py:86
+#: .\product\models.py:113
+#: .\product\templates\product\product-details.html:117
 msgid "Məhsul kodu"
 msgstr ""
 
-#: .\product\models.py:99
+#: .\product\models.py:126
+#: .\product\templates\product\product-details.html:117
 msgid "Qiymət"
 msgstr ""
 
-#: .\product\models.py:109 .\product\models.py:219
-msgid "Endirim"
-msgstr ""
-
-#: .\product\models.py:112
+#: .\product\models.py:139
+#: .\product\templates\product\product-details.html:108
 msgid "Çəki"
 msgstr ""
 
-#: .\product\models.py:123
+#: .\product\models.py:150
 msgid "Qısa açıqlama"
 msgstr ""
 
-#: .\product\models.py:126
+#: .\product\models.py:153
 msgid "Açıqlama"
 msgstr ""
 
-#: .\product\models.py:133
+#: .\product\models.py:160 .\product\templates\product\product-details.html:69
+#: .\product\templates\product\product-details.html:169
+#: .\product\templates\product\products.html:181
 msgid "Yeni"
 msgstr ""
 
-#: .\product\models.py:174 .\product\models.py:183
+#: .\product\models.py:205 .\product\models.py:214
+#: .\product\templates\product\product-details.html:16
 msgid "Məhsul"
 msgstr ""
 
-#: .\product\models.py:175
-msgid "Məhsullar"
-msgstr ""
-
-#: .\product\models.py:198
+#: .\product\models.py:229
 msgid "Məhsul Şəkili"
 msgstr ""
 
-#: .\product\models.py:199
+#: .\product\models.py:230
 msgid "Məhsul Şəkilləri"
 msgstr ""
 
-#: .\product\models.py:209
+#: .\product\models.py:240
 msgid "Faiz"
 msgstr ""
 
-#: .\product\models.py:220
+#: .\product\models.py:251
 msgid "Endirimlər"
 msgstr ""
 
-#: .\product\models.py:233
+#: .\product\models.py:264
 msgid "Üst Dəyəri"
 msgstr ""
 
-#: .\product\models.py:271
+#: .\product\models.py:302
 msgid "Məhsulun Əlavə özəlliyi"
 msgstr ""
 
-#: .\product\models.py:272
+#: .\product\models.py:303
 msgid "Məhsulun Əlavə özəllikləri"
+msgstr ""
+
+#: .\product\templates\product\product-details.html:117
+msgid "Məhsul adı"
+msgstr ""
+
+#: .\product\templates\product\product-details.html:117
+msgid "Whatsappla əlaqə"
+msgstr ""
+
+#: .\product\templates\product\product-details.html:134
+msgid "Məhsulun təsviri"
+msgstr ""
+
+#: .\product\templates\product\product-details.html:155
+msgid "Oxşar Məhsullar"
+msgstr ""
+
+#: .\product\templates\product\products.html:135
+msgid "Filtirlə"
+msgstr ""
+
+#: .\product\templates\product\products.html:160
+msgid "Önərilən sıralama"
+msgstr ""
+
+#: .\product\templates\product\products.html:161
+msgid "Məhsulun adı A-Z"
+msgstr ""
+
+#: .\product\templates\product\products.html:162
+msgid "Məhsulun adı Z-A"
+msgstr ""
+
+#: .\product\templates\product\products.html:163
+msgid "Qiymət (Ucuzdan Bahaya)"
+msgstr ""
+
+#: .\product\templates\product\products.html:164
+msgid "Qiymət (Bahadan Ucuza)"
 msgstr ""
 
 #: .\services\abstract_models.py:7
