@@ -87,6 +87,9 @@ class SiteInfo(TimeStampedModel):
         verbose_name=_("Ad"),
         max_length=100,
     )
+    url = models.URLField(
+        verbose_name=_("URL"),
+    )
     header_logo = models.ImageField(
         verbose_name=_("Header Logo"),
         upload_to="site_info/",
@@ -238,7 +241,8 @@ class HomeBanner(TimeStampedModel):
         existing_count = HomeBanner.objects.exclude(id=self.id).count()
 
         if existing_count > 0:
-            raise ValidationError(_("Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner mövcuddur."))
+            raise ValidationError(
+                _("Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner mövcuddur."))
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -305,8 +309,40 @@ class AboutUs(TimeStampedModel):
         existing_count = AboutUs.objects.exclude(id=self.id).count()
 
         if existing_count > 0:
-            raise ValidationError(_("Yalnız bir Haqqımızda məlumatı olmalıdır. Artıq 1 ədəd mövcuddur."))
+            raise ValidationError(
+                _("Yalnız bir Haqqımızda məlumatı olmalıdır. Artıq 1 ədəd mövcuddur."))
 
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
+
+
+class TitleDescription(TimeStampedModel):
+    PAGE_CHOICES = (
+        ("home", _("Ana səhifə")),
+        ("about", _("Haqqımızda")),
+        ("products", _("Məhsullar")),
+        ("blogs", _("Bloqlar")),
+        ("contact", _("Bizimlə əlaqə")),
+    )
+
+    page_type = models.CharField(
+        verbose_name=_("Səhifə tipi"),
+        max_length=50,
+        unique=True,
+        choices=PAGE_CHOICES
+    )
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=400
+    )
+    description = models.TextField(
+        verbose_name=_("Açıqlama"),
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Başlıq və Açıqlama")
+        verbose_name_plural = _("Başlıq və Açıqlama")

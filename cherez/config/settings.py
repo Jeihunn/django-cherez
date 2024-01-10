@@ -89,6 +89,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # ========== MY CONTEXT PROCESSORS ==========
+                "core.context_processors.title_description_global",
             ],
         },
     },
@@ -100,26 +102,26 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-# # SQLite
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
-# PostgreSQL
+# SQLite
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get("POSTGRES_DB", 'db_name'),
-        'USER': os.environ.get("POSTGRES_USER", 'postgres'),
-        'PASSWORD': os.environ.get("POSTGRES_PASSWORD", 12345),
-        # 'localhost' or droplet_ip
-        'HOST': os.environ.get("POSTGRES_HOST", 'localhost'),
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# # PostgreSQL
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.environ.get("POSTGRES_DB", 'db_name'),
+#         'USER': os.environ.get("POSTGRES_USER", 'postgres'),
+#         'PASSWORD': os.environ.get("POSTGRES_PASSWORD", 12345),
+#         # 'localhost' or droplet_ip
+#         'HOST': os.environ.get("POSTGRES_HOST", 'localhost'),
+#         'PORT': 5432,
+#     }
+# }
 
 
 # Password validation

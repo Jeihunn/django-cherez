@@ -109,6 +109,17 @@ class Product(TimeStampedModel):
         verbose_name=_("Başlıq"),
         max_length=255
     )
+    page_title = models.CharField(
+        verbose_name=_("Səhifə başlığı"),
+        max_length=255,
+        null=True,
+        blank=True
+    )
+    page_description = models.TextField(
+        verbose_name=_("Səhifə açıqlaması"),
+        null=True,
+        blank=True
+    )
     product_code = models.CharField(
         verbose_name=_("Məhsul kodu"),
         max_length=50,

@@ -12,7 +12,8 @@ from .models import (
     HomeAdvantage,
     HomeBanner,
     HomeSlider,
-    AboutUs
+    AboutUs,
+    TitleDescription,
 )
 
 
@@ -139,3 +140,16 @@ class AboutUsAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
+
+
+@admin.register(TitleDescription)
+class TitleDescriptionAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'page_type',
+        'title',
+        'description',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display

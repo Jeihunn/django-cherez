@@ -3,6 +3,17 @@
 {% load i18n %}
 
 
+{% block img %}
+	<title>{% if blog_post.page_title %}{{ blog_post.page_title }}{% else %}{{ blog_post.title }}{% endif %}</title>
+	<meta property="og:title" content="{% if blog_post.page_title %}{{ blog_post.page_title }}{% else %}{{ blog_post.title }}{% endif %}">
+	<meta property="og:description" content="{% if blog_post.page_description %}{{ blog_post.page_description }}{% else %}{{ blog_post.short_description }}{% endif %}">
+	<meta name="description" content="{% if blog_post.page_description %}{{ blog_post.page_description }}{% else %}{{ blog_post.short_description }}{% endif %}">
+	<meta property="og:image" content="{{ site_info.url }}{{ blog_post.cover_image.url }}">
+	<meta property="og:url" content="{{ site_info.url }}{{ request.path }}">
+	<meta property="og:type" content="website">
+{% endblock img %}
+
+
 {% block content %}
 <!-- =========================== Breadcrumbs =================================== -->
 <div class="breadcrumbs_wrap dark">

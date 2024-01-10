@@ -53,8 +53,19 @@ class BlogCategory(TimeStampedModel):
 
 class BlogPost(TimeStampedModel):
     title = models.CharField(
-        max_length=255,
         verbose_name=_("Başlıq"),
+        max_length=255,
+    )
+    page_title = models.CharField(
+        verbose_name=_("Səhifə başlığı"),
+        max_length=255,
+        null=True,
+        blank=True
+    )
+    page_description = models.TextField(
+        verbose_name=_("Səhifə açıqlaması"),
+        null=True,
+        blank=True
     )
     category = models.ForeignKey(
         to="blog.BlogCategory",

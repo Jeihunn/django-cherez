@@ -4,6 +4,17 @@
 {% load i18n %}
 
 
+{% block img %}
+	<title>{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.title }}{% endif %}</title>
+	<meta property="og:title" content="{% if product.page_title %}{{ product.page_title }}{% else %}{{ product.title }}{% endif %}">
+	<meta property="og:description" content="{% if product.page_description %}{{ product.page_description }}{% else %}{{ product.short_description }}{% endif %}">
+	<meta name="description" content="{% if product.page_description %}{{ product.page_description }}{% else %}{{ product.short_description }}{% endif %}">
+	<meta property="og:image" content="{{ site_info.url }}{{ product.cover_image.url }}">
+	<meta property="og:url" content="{{ site_info.url }}{{ request.path }}">
+	<meta property="og:type" content="website">
+{% endblock img %}
+
+
 {% block content %}
 
 <!-- =========================== Breadcrumbs =================================== -->
@@ -113,7 +124,6 @@
 
 					<div class="no-mrg">
 						<div class="wp-area">
-							{% get_site_info as site_info %}
 							<a href="https://api.whatsapp.com/send?phone={{ site_info.whatsapp }}&text={% if product.product_code %}{% trans "Məhsul kodu" %}: {{ product.product_code }} | {% endif %}{% trans "Məhsul adı" %}: {{ product.title }} | {% trans "Qiymət" %}: {% if product.discounted_price %}{{ product.discounted_price }}{% else %}{{ product.price }}{% endif %}" class="fa-brands fa-whatsapp wp" target="_blank">{% trans "Whatsappla əlaqə" %}</a>
 						</div>
 

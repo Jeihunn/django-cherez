@@ -1,4 +1,7 @@
 {% load static %}
+{% load tags %}
+
+{% get_site_info as site_info %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +25,6 @@
 
 	{% block img %}{% endblock img %}
 
-	{% get_site_info as site_info %}
 	<link rel="icon" type="image/x-icon" href="{{ site_info.favicon.url }}">
 
     {% block extra_css %}{% endblock extra_css %}

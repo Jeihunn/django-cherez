@@ -4,6 +4,17 @@
 {% load i18n %}
 
 
+{% block img %}
+	<title>{% for i in title_description_list %}{% if i.page_type == "products" %}{{ i.title }}{% endif %}{% endfor %}</title>
+	<meta property="og:title" content="{% for i in title_description_list %}{% if i.page_type == "products" %}{{ i.title }}{% endif %}{% endfor %}">
+	<meta property="og:description" content="{% for i in title_description_list %}{% if i.page_type == "products" %}{{ i.description }}{% endif %}{% endfor %}">
+	<meta property="og:image" content="{{ site_info.url }}{{ site_info.header_logo.url }}">
+	<meta property="og:url" content="{{ site_info.url }}{{ request.path }}">
+	<meta property="og:type" content="website">
+	<meta name="description" content="{% for i in title_description_list %}{% if i.page_type == "products" %}{{ i.description }}{% endif %}{% endfor %}">
+{% endblock img %}
+
+
 {% block content %}
 <!-- =========================== Breadcrumbs =================================== -->
 <div class="breadcrumbs_wrap dark">

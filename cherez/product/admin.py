@@ -8,7 +8,7 @@ from .models import (
     Product,
     ProductImage,
     Discount,
-    ProductAdditional
+    ProductAdditional,
 )
 
 
