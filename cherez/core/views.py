@@ -16,6 +16,7 @@ from blog.models import (
 from .forms import ContactForm, SubscriberForm
 from .models import (
     FAQ,
+    AboutUs,
     HomeAdvantage,
     HomeBanner,
     HomeSlider
@@ -48,9 +49,11 @@ def index_view(request):
 
 def about_us_view(request):
     faqs = FAQ.objects.filter(is_active=True).order_by("display_order")
+    about_us_data = AboutUs.objects.first()
 
     context = {
         "faqs": faqs,
+        "about_us_data": about_us_data
     }
     return render(request, 'core/about-us.html', context)
 

@@ -238,8 +238,7 @@ class HomeBanner(TimeStampedModel):
         existing_count = HomeBanner.objects.exclude(id=self.id).count()
 
         if existing_count > 0:
-            raise ValidationError(
-                "Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner yaradılıb.")
+            raise ValidationError(_("Yalnız bir 'Ana səhifə banneri' olmalıdır. Artıq 1 ədəd banner mövcuddur."))
 
     def save(self, *args, **kwargs):
         self.full_clean()
@@ -280,3 +279,34 @@ class HomeSlider(TimeStampedModel):
     class Meta:
         verbose_name = _("Ana səhifə slayderi")
         verbose_name_plural = _("Ana səhifə slayderləri")
+
+
+class AboutUs(TimeStampedModel):
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=100
+    )
+    description = models.TextField(
+        verbose_name=_("Açıqlama"),
+    )
+    image = models.ImageField(
+        verbose_name=_("Şəkil"),
+        upload_to="about_us/",
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Haqqımızda")
+        verbose_name_plural = _("Haqqımızda")
+
+    def clean(self):
+        existing_count = AboutUs.objects.exclude(id=self.id).count()
+
+        if existing_count > 0:
+            raise ValidationError(_("Yalnız bir Haqqımızda məlumatı olmalıdır. Artıq 1 ədəd mövcuddur."))
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        super().save(*args, **kwargs)

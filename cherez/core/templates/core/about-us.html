@@ -28,26 +28,21 @@
 
 
 <!-- =========================== About Us =================================== -->
+{% if about_us_data %}
 <section>
 	<div class="container about-us">
 		<div class="row">
 
 			<div class="col-lg-5 col-md-6 col-sm-12">
-				<h2>We are 100% trustable and provide <span class="theme-cl">fast delivery</span></h2>
-				<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-					consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam
-					est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non
-					numquam</p>
-				<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-					voluptatum.</p>
+				<h2>{{ about_us_data.title }}</h2>
+				<p>{{ about_us_data.description }}</p>
 				<a href="{% url "product_list_view" %}" class="btn btn-theme mt-2">{% trans "Məhsullar" %}</a>
 			</div>
 
 			<div class="col-lg-6 col-md-6 col-sm-12 ml-auto">
 				<div class="about_video">
 					<div class="thumb">
-						<img class="pro_img img-fluid w100" src="{% static "assets/img/offer-4.jpg" %}" alt="7.jpg">
-
+						<img class="pro_img img-fluid w100" src="{{ about_us_data.image.url }}" alt="about">
 					</div>
 				</div>
 			</div>
@@ -55,9 +50,9 @@
 		</div>
 	</div>
 </section>
-<!-- =========================== About Us =================================== -->
+{% endif %}
 
-
+{% if faqs %}
 <section>
 	<div class="container">
 		<div class="faq-container">
@@ -77,5 +72,6 @@
 		</div>
 	</div>
 </section>
+{% endif %}
 <!-- =========================== About Us =================================== -->
 {% endblock content %}
