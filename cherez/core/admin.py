@@ -10,7 +10,8 @@ from .models import (
     SiteInfo,
     SocialMedia,
     HomeAdvantage,
-    HomeBanner
+    HomeBanner,
+    HomeSlider
 )
 
 
@@ -102,6 +103,19 @@ class HomeAdvantageAdmin(TranslationAdmin):
 
 @admin.register(HomeBanner)
 class HomeBannerAdmin(TranslationAdmin):
+    class Media:
+        js = (
+            'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
+            'http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js',
+            'modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
+        }
+
+
+@admin.register(HomeSlider)
+class HomeSliderAdmin(TranslationAdmin):
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',

@@ -221,6 +221,11 @@ class HomeBanner(TimeStampedModel):
         verbose_name=_("Arxa plan şəkli"),
         upload_to="home_banner/",
     )
+    link = models.URLField(
+        verbose_name=_("Link"),
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.title
@@ -239,3 +244,39 @@ class HomeBanner(TimeStampedModel):
     def save(self, *args, **kwargs):
         self.full_clean()
         super().save(*args, **kwargs)
+
+
+class HomeSlider(TimeStampedModel):
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=100
+    )
+    description = models.TextField(
+        verbose_name=_("Açıqlama"),
+    )
+    image = models.ImageField(
+        verbose_name=_("Şəkil"),
+        upload_to="home_slider/",
+    )
+    button_text = models.CharField(
+        verbose_name=_("Button mətni"),
+        max_length=100,
+        blank=True,
+        null=True
+    )
+    button_link = models.URLField(
+        verbose_name=_("Button linki"),
+        blank=True,
+        null=True
+    )
+    is_active = models.BooleanField(
+        verbose_name=_("Aktiv"),
+        default=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Ana səhifə slayderi")
+        verbose_name_plural = _("Ana səhifə slayderləri")

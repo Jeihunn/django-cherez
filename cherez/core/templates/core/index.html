@@ -4,51 +4,37 @@
 
 
 {% block content %}
+
+{% if home_sliders %}
 <!-- ======================== Banner Start ==================== -->
 <section class="slider-section">
 	<div id="carousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators -->
 		<ol class="carousel-indicators">
-			<li data-target="#carousel" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel" data-slide-to="1"></li>
-			<li data-target="#carousel" data-slide-to="2"></li>
+			{% for slider in home_sliders %}
+			<li data-target="#carousel" data-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></li>
+			{% endfor %}
 		</ol> <!-- End of Indicators -->
+
 
 		<!-- Carousel Content -->
 		<div class="carousel-inner" role="listbox">
-			<div class="carousel-item active" style="background-image: url('{% static "assets/img/banner.webp" %}');">
+
+			{% for slider in home_sliders %}
+			<div class="carousel-item{% if forloop.first %} active{% endif %}" style="background-image: url({{ slider.image.url }});">
 				<div class="carousel-caption">
-					<h2>Free Home<br>Delivery in 24 hour</h2>
+					<h2>{{ slider.title }}</h2>
 					<div class="d-none d-md-block">
-						<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
-							odit aut fugit, sed quia
-							consequuntur magni dolores.</p>
+						<p>{{ slider.description }}</p>
 					</div>
-					<a href="products.html" class="btn btn-theme product-link">Məhsullara keçid<i
-							class="ti-arrow-right ml-2"></i></a>
+					{% if slider.button_text or slider.button_link %}
+						<a {% if slider.button_link %}href="{{ slider.button_link }}"{% endif %} class="btn btn-theme product-link">{{ slider.button_text }}<i
+								class="ti-arrow-right ml-2"></i></a>
+					{% endif %}
 				</div>
 			</div> <!-- End of Carousel Item -->
+			{% endfor %}
 
-			<div class="carousel-item" style="background-image: url({% static "assets/img/banner-1.jpg" %});">
-				<div class="carousel-caption d-none d-md-block">
-					<h2>Free Home<br>Delivery in 24 hour</h2>
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-						consequuntur magni dolores.</p>
-					<a href="products.html" class="btn btn-theme">Məhsullara keçid<i
-							class="ti-arrow-right ml-2"></i></a>
-				</div>
-			</div> <!-- End of Carousel Item -->
-
-			<div class="carousel-item"
-				style="background-image: url('{% static "assets/img/4_f7876c53-7f18-4ed6-bd52-811252e606fe_470x.webp" %}');">
-				<div class="carousel-caption d-none d-md-block">
-					<h2>Free Home<br>Delivery in 24 hour</h2>
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-						consequuntur magni dolores.</p>
-					<a href="products.html" class="btn btn-theme">Məhsullara keçid<i
-							class="ti-arrow-right ml-2"></i></a>
-				</div>
-			</div> <!-- End of Carousel Item -->
 		</div> <!-- End of Carousel Content -->
 
 		<!-- Previous & Next -->
@@ -62,8 +48,8 @@
 		</a>
 	</div> <!-- End of Carousel -->
 </section>
-
 <!-- ======================== Banner End ==================== -->
+{% endif %}
 
 <!-- ======================== Choose Category Start ==================== -->
 <section class="pt-lg-5 pt-4  pb-0">
@@ -188,7 +174,7 @@
 					<div class="sec-heading center">
 						<span class="theme-cl">{{ home_banner.description }}</span>
 						<h2 class="grocery_title">{{ home_banner.title }}</h2>
-						<a href="products.html">
+						<a {% if home_banner.link %}href="{{ home_banner.link }}"{% endif %}>
 							<div class="col-lg-6 col-md-12 col-sm-12 ml-auto">
 								<div class="about_video avto">
 									<div class="thumb">
