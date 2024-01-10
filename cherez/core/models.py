@@ -94,6 +94,11 @@ class SiteInfo(TimeStampedModel):
         verbose_name=_("Footer Logo"),
         upload_to="site_info/",
     )
+    footer_slogan = models.TextField(
+        verbose_name=_("Footer Slogan"),
+        blank=True,
+        null=True
+    )
     favicon = models.ImageField(
         verbose_name=_("Favicon"),
         upload_to="site_info/",
