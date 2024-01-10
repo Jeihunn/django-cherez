@@ -8,41 +8,19 @@
         <div class="container">
             <div class="row">
 
+                {% for advertage in advertages %}
                 <div class="col-lg-4 col-md-4">
                     <div class="single_facts">
                         <div class="facts_icon">
-                            <i class="ti-shopping-cart"></i>
+                            <i class="{{ advertage.icon_class }}"></i>
                         </div>
                         <div class="facts_caption">
-                            <h4>Free Home Delivery</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
+                            <h4>{{ advertage.title }}</h4>
+                            <p>{{ advertage.description }}</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-4 col-md-4">
-                    <div class="single_facts">
-                        <div class="facts_icon">
-                            <i class="ti-money"></i>
-                        </div>
-                        <div class="facts_caption">
-                            <h4>Money Back Guarantee</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 col-md-4">
-                    <div class="single_facts last">
-                        <div class="facts_icon">
-                            <i class="ti-headphone-alt"></i>
-                        </div>
-                        <div class="facts_caption">
-                            <h4>24x7 Online Support</h4>
-                            <p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut</p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
             </div>
         </div>

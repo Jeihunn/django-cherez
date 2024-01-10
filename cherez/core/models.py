@@ -147,7 +147,7 @@ class SiteInfo(TimeStampedModel):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         verbose_name = _("Sayt məlumatı")
         verbose_name_plural = _("Sayt məlumatları")
@@ -176,3 +176,29 @@ class SocialMedia(TimeStampedModel):
         verbose_name=_("URL"),
         max_length=255
     )
+
+
+class HomeAdvantage(TimeStampedModel):
+    icon_class = models.CharField(
+        verbose_name=_("Ikon class"),
+        max_length=50,
+        help_text=_('Məs: "ti-headphone-alt" | class="CLASS_NAME"')
+    )
+    title = models.CharField(
+        verbose_name=_("Başlıq"),
+        max_length=100
+    )
+    description = models.TextField(
+        verbose_name=_("Açıqlama"),
+    )
+    is_active = models.BooleanField(
+        verbose_name=_("Aktiv"),
+        default=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = _("Avantaj")
+        verbose_name_plural = _("Avantajlar")
