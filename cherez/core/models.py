@@ -86,8 +86,12 @@ class SiteInfo(TimeStampedModel):
         verbose_name=_("Ad"),
         max_length=100,
     )
-    logo = models.ImageField(
-        verbose_name=_("Logo"),
+    header_logo = models.ImageField(
+        verbose_name=_("Header Logo"),
+        upload_to="site_info/",
+    )
+    footer_logo = models.ImageField(
+        verbose_name=_("Footer Logo"),
         upload_to="site_info/",
     )
     favicon = models.ImageField(
