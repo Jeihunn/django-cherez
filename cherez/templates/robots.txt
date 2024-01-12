@@ -1,0 +1,6 @@
+User-agent:*
+Disallow: /adm1n/
+Disallow: /admin/
+Disallow: /rosetta/
+
+Sitemap: https://cherez.az/sitemap.xml
