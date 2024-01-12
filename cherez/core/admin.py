@@ -43,6 +43,7 @@ class FAQAdmin(TranslationAdmin):
         'id',
         'question',
     )
+    search_fields = ("question",)
 
     class Media:
         js = (
@@ -77,6 +78,7 @@ class SubscriberAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'email',
+        'subscription_status',
         'created_at',
         'updated_at',
     )
@@ -89,10 +91,29 @@ class SubscriberAdmin(admin.ModelAdmin):
 @admin.register(SiteInfo)
 class SiteInfoAdmin(admin.ModelAdmin):
     inlines = [SocialMediaInline,]
+    list_display = (
+        'id',
+        'name',
+        'url',
+    )
+    list_display_links = (
+        'id',
+        'name',
+    )
 
 
 @admin.register(HomeAdvantage)
 class HomeAdvantageAdmin(TranslationAdmin):
+    list_display = (
+        'id',
+        'title',
+        'icon_class',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ("title", "icon_class")
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
@@ -103,8 +124,18 @@ class HomeAdvantageAdmin(TranslationAdmin):
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
 
+
 @admin.register(HomeBanner)
 class HomeBannerAdmin(TranslationAdmin):
+    list_display = (
+        'id',
+        'title',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ("title",)
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
@@ -118,6 +149,15 @@ class HomeBannerAdmin(TranslationAdmin):
 
 @admin.register(HomeSlider)
 class HomeSliderAdmin(TranslationAdmin):
+    list_display = (
+        'id',
+        'title',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ("title",)
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
@@ -131,6 +171,11 @@ class HomeSliderAdmin(TranslationAdmin):
 
 @admin.register(AboutUs)
 class AboutUsAdmin(TranslationAdmin):
+    list_display = (
+        'id',
+        'title',
+    )
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',

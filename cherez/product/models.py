@@ -100,6 +100,7 @@ class ProductCategory(TimeStampedModel):
         return result
 
     class Meta:
+        ordering = ["parent__id", "id"]
         verbose_name = _("Məhsul Kategoriyası")
         verbose_name_plural = _("Məhsul Kategoriyaları")
 
@@ -310,5 +311,6 @@ class ProductAdditional(TimeStampedModel):
         return result
 
     class Meta:
+        ordering = ["parent__id", "id"]
         verbose_name = _("Məhsulun Əlavə özəlliyi")
         verbose_name_plural = _("Məhsulun Əlavə özəllikləri")

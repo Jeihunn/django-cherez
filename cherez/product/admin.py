@@ -26,6 +26,19 @@ class ProductImageInline(admin.TabularInline):
 
 @admin.register(ProductCategory)
 class ProductCategoryAdmin(TranslationAdmin):
+    list_display = (
+        'id',
+        'title',
+        'parent',
+        'show_in_navbar',
+        'show_in_footer',
+        'show_in_home',
+        'slug',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ['title', 'slug']
 
     class Media:
         js = (
@@ -36,7 +49,6 @@ class ProductCategoryAdmin(TranslationAdmin):
         css = {
             'screen': ('modeltranslation/css/tabbed_translation_fields.css',),
         }
-
 
 
 @admin.register(Product)
@@ -44,6 +56,25 @@ class ProductAdmin(TranslationAdmin):
     inlines = [ProductImageInline,]
     autocomplete_fields = ["additionals"]
 
+    list_display = (
+        'id',
+        'product_code',
+        'title',
+        'slug',
+        'category',
+        'price',
+        'discount',
+        'weight',
+        'is_new',
+        'show_in_home',
+        'is_active',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ['title', 'product_code', 'slug']
+    list_filter = ['is_active', 'is_new', 'show_in_home']
+
     class Media:
         js = (
             'http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js',
@@ -55,17 +86,33 @@ class ProductAdmin(TranslationAdmin):
         }
 
 
-
 @admin.register(Discount)
 class DiscountAdmin(admin.ModelAdmin):
-    pass
+    list_display = (
+        'id',
+        'title',
+        'percent',
+        'is_active',
+        'created_at',
+        'updated_at',
+    )
+    list_display_links = list_display
+    search_fields = ['title']
+    list_filter = ['is_active']
 
 
 @admin.register(ProductAdditional)
 class ProductAdditionalAdmin(TranslationAdmin):
-    search_fields = ["title"]
-    list_display = ["title", "parent"]
+    list_display = (
+        'id',
+        'title',
+        'parent',
+        'slug',
+        'created_at',
+        'updated_at',
+    )
     list_display_links = list_display
+    search_fields = ['title', 'slug']
 
     class Media:
         js = (

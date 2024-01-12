@@ -38,7 +38,13 @@ class BlogPostAdmin(TranslationAdmin):
 
 @admin.register(BlogCategory)
 class BlogCategoryAdmin(TranslationAdmin):
-    list_display = ("title", "slug", "is_active")
+    list_display = (
+        "title",
+        "slug",
+        "is_active",
+        "created_at",
+        "updated_at",
+    )
     list_filter = ("is_active",)
     search_fields = ("title",)
 
